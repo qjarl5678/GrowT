@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import users from "../api/routes/users.js";
 import { sequelize } from "../db/mysql.js";
+import { connectDB } from "../db/mongoose.js";
 import cookieParser from "cookie-parser";
 
 export default async (app) => {
@@ -38,6 +39,10 @@ export default async (app) => {
   sequelize.sync().then((client) => {
     console.log(client)
   });
+
+  connectDB().then(()=> {
+    console.log('SuccessFully connected to mongodb');
+  }).catch(e => console.error(e));
 
   /* DB 연결
   db.getConnection().then((connection) => console.log("DB Connected"));

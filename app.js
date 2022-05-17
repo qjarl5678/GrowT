@@ -4,12 +4,22 @@ import https from "https";
 import fs from "fs";
 
 async function startServer() {
+  /* 서버에서 key
   const options = {
 	  ca:fs.readFileSync('/ubuntu/Key/node/growingtrip.com.ca-bundle.pem'),
 	  key:fs.readFileSync('/ubuntu/Key/node/growingtrip.com.key.pem'),
 	  cert:fs.readFileSync('/ubuntu/Key/node/growingtrip.com.crt.pem'),
   	  minVersion:"TLSv1.2"
+  }*/
+
+  // 창현 로컬에서 key
+  const options = {
+	  ca:fs.readFileSync('../Key/growingtrip.com.ca-bundle.pem'),
+	  key:fs.readFileSync('../Key/growingtrip.com.key.pem'),
+	  cert:fs.readFileSync('../Key/growingtrip.com.crt.pem'),
+  	  minVersion:"TLSv1.2"
   }
+
   const app = express();
   const port = 3000;
   const host = '172.17.0.2';

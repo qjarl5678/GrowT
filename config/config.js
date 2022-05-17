@@ -23,4 +23,7 @@ export const config = {
     password: required("DB_PASSWORD"),
     port: required("DB_PORT"),
   },
+  mdb: {
+    host: required("MDB_HOST"),
+  }
 };
