@@ -22,7 +22,6 @@ async function startServer() {
 
   const app = express();
   const port = 3000;
-  const host = '172.17.0.2';
   await loaders(app);
  
   console.log(options);
@@ -37,4 +36,4 @@ async function startServer() {
   });
   */
 }
-startServer();
+await startServer();
