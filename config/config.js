@@ -25,5 +25,12 @@ export const config = {
   },
   mdb: {
     host: required("MDB_HOST"),
+  },
+  csp : {
+    directives: {
+      defaultSrc:["'self'",'https://*.navercorp.com'],
+      scriptSrc:["'self'",'https://openapi.map.naver.com',"'unsafe-inline'", 'https://*.pstatic.net'],
+      imgSrc:["'self'",'https://api.cdn.visitjeju.net','https://*.pstatic.net']
+    }
   }
 };

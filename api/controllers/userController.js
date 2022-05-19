@@ -23,7 +23,8 @@ export async function userLogin(req, res){
     return res.status(401).json({message: ' Invalid user or password'});
   }
   const token = createJwtToken(user.userId);
-  res.cookie('accessToken',token,{httpOnly:true, maxAge: 45 * 60 * 1000});
+  // httpOnly는 보안때문에 설정 / 쿠키 시간은 1시간
+  res.cookie('accessToken',token,{httpOnly:true, maxAge: 60 * 60 * 1000});
   res.status(200).json({token, userId});
 }
 

@@ -3,17 +3,28 @@ import cors from "cors";
 import helmet from "helmet";
 import users from "../api/routes/users.js";
 import spots from "../api/routes/spots.js";
+import { config } from "../config/config.js";
 import { sequelize } from "../db/mysql.js";
 import { connectDB } from "../db/mongoose.js";
 import cookieParser from "cookie-parser";
 
 export default async (app) => {
+
+  const corsOptions = {
+    origin: "*",
+    credentials:true
+  }
+
   // 기본 미들웨어
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(cors());
-  app.use(helmet());
+  app.use(cors(corsOptions));
+  app.use(helmet({
+    contentSecurityPolicy:false,
+    crossOriginEmbedderPolicy:false,
+  }));
+  // app.use(helmet.contentSecurityPolicy(config.csp));
 
 
   app.set("view engine", "ejs");
