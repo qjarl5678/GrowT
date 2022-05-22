@@ -50,7 +50,7 @@ export async function addUser(req, res) {
   }
 }
 
-
+// 사용자 리스트 가져오기
 export async function getUserList(req, res) {
   res.send(await userModel.getUserList());
 }

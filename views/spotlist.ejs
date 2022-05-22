@@ -1,30 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>간단한 지도 표시하기</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>spotlist</title>
 </head>
+
 <body>
-<div id="map" style="width:100%;height:400px;"></div>
-<% 
-    for(let i=0; i < 5; i++){ %>
-        <div>
-            <img src="<%=spotList[i].thumbnailpath%>">
-        </div>
-        <div><%=spotList[i].title%></div>
-    <% }
-%>
-<script>
-var mapOptions = {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10
-};
+    <div class="main">
+        <% spotList.forEach(data=> { %>
+            <div class="data">
+                <a href="/spots/info/<%=data.contentsid%>">
+                    <div><img src='<%= data.thumbnailpath%>'></div>
+                    <div>
+                        <%= data.title%>
+                    </div>
+                    <div>
+                        <%= data.introduction%>
+                    </div>
+                    <div>
+                        <%= data.address%>
+                    </div>
+                </a>
+                <div>
+                    <% data.tag.forEach(tag=> { %>
+                        <span>#<%= tag %></span>
+                        <% }) %>
+                </div>
+            </div>
+            <% })%>
+    </div>
+    <script>
+        // data 박스를 감싸고 있는 div class 가져오기
+        const dataBox = document.querySelector('.main');
 
-var map = new naver.maps.Map('map', mapOptions);
+        // 스크롤 시 몇번째까지 보여줬는지 체크하기 위해서 사용
+        let num = 0;
 
-</script>
+        // 스크롤이 맨 아래로 내려갔을 때
+        window.addEventListener('scroll', () => {
+            // innerHeight = 수평 스크롤 막대의 높이를 포함하여 창의 내부 높이 픽셀단위
+            // scrollY = 수직으로 얼마나 스크롤 되었는지 픽셀단위
+            let val = window.innerHeight + window.scrollY; // 스크롤된 픽셀  + 창의 높이 픽셀
+            console.log(`innerHeight : ${window.innerHeight}`);
+            console.log(`scrollY : ${window.scrollY}`);
+            console.log(`offsetHeight : ${document.body.offsetHeight}`);
+
+            // document.body.offsetHeight = 전체 높이
+            if (val >= document.body.offsetHeight) {
+                num++;
+                showList(num);
+            }
+        })
+
+
+        async function showList(num) {
+            const result = await getContent(num);
+            result.forEach((data, idx) => {
+                let temp = '';
+                data.tag.forEach(tag => {
+                    temp = temp + '#' + tag + ' ';
+                });
+                let html = '';
+                html = `<div class="data">
+                    <a href='/spots/info/${data.contentsid}'>
+                    <div><img src=${data.thumbnailpath}></div>
+                    <div>${data.title}</div>
+                    <div>${data.introduction}</div>
+                    <div>${data.address}</div>
+                    </a>
+                    <div>${temp}</div><hr>
+                </div>`
+
+                dataBox.insertAdjacentHTML('beforeend', html);
+
+            })
+        }
+
+        // 내용 가져오기 
+        async function getContent(num) {
+            const data = await fetch(`/spots/${num}`);
+            return data.json();
+        }
+
+    </script>
 </body>
+
 </html>

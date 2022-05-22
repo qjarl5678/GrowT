@@ -22,9 +22,13 @@ const spotSchema = new Schema({
 const Tour = mongoose.model('Tour', spotSchema,'Tour');
 
 export async function getSpotList(){
-    return await Tour.find({}).exec();
+    return await Tour.find({}).limit(10);
+}
+
+export async function getSpots(skip) {
+    return await Tour.find({}).skip(skip).limit(10);
 }
   
-export async function getOneSpot(){
-    return await Tour.find({});
+export async function getOneSpot(contentsid){
+    return await Tour.find({'contentsid' : contentsid});
 }
