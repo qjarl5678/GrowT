@@ -1,5 +1,5 @@
 import * as userModel from "../../models/userModel.js";
-import { createJwtToken } from "../../services/jwt.js";
+import { createJwtToken, createRefreshToken } from "../../services/jwt.js";
 import bcrypt from "bcrypt";
 import {config} from '../../config/config.js';
 
@@ -22,10 +22,10 @@ export async function userLogin(req, res){
   if(!isValidPassword){
     return res.status(401).json({message: ' Invalid user or password'});
   }
-  const token = createJwtToken(user.userId);
+  const accessToken = createJwtToken(user.userId);
   // httpOnly는 보안때문에 설정 / 쿠키 시간은 1시간
-  res.cookie('accessToken',token,{httpOnly:true, maxAge: 60 * 60 * 1000});
-  res.status(200).json({token, userId});
+  res.cookie('accessToken',accessToken,{httpOnly:true});
+  res.status(200).json({accessToken, userId});
 }
 
 // 사용자 생성 페이지 호출
@@ -43,6 +43,8 @@ export async function addUser(req, res) {
   const hased = await bcrypt.hash(user.userPw, parseInt(saltRounds));
   user.regDate = new Date();
   user.userPw = hased;
+  user.refreshToken = '';
+  console.log(user);
   if(await userModel.createUser(user)){
     res.status(201).json({message: 'post userId'});
   } else {

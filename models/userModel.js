@@ -34,7 +34,7 @@ export const User = sequelize.define('users', {
 }, { timestamps:false});
 
 export async function createUser(user){
-  return User.create(user).then(data => {console.log(data); return data;});
+  return User.create(user).then(data => {console.log(data); return data;}).catch((err) => {console.log(err)});
 }
 
 export async function findByUserId(userId){

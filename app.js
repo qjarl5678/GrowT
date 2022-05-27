@@ -14,9 +14,9 @@ async function startServer() {
 
   // 창현 로컬에서 key
   const options = {
-	  ca:fs.readFileSync('../Key/growingtrip.com.ca-bundle.pem'),
-	  key:fs.readFileSync('../Key/growingtrip.com.key.pem'),
-	  cert:fs.readFileSync('../Key/growingtrip.com.crt.pem'),
+	  ca:fs.readFileSync('./Key/growingtrip.com.ca-bundle.pem'),
+	  key:fs.readFileSync('./Key/growingtrip.com.key.pem'),
+	  cert:fs.readFileSync('./Key/growingtrip.com.crt.pem'),
   	  minVersion:"TLSv1.2"
   }
 
@@ -24,16 +24,7 @@ async function startServer() {
   const port = 3000;
   await loaders(app);
  
-  console.log(options);
   https.createServer(options,app).listen(port);
-  /*
-  app.listen(port, host, (err) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    console.log(`Your server is ready !`);
-  });
-  */
+
 }
 await startServer();
