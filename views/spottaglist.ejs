@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>spottaglist</title>
+</head>
+
+<body>
+    <div class="main">
+        <% spotList.forEach(data=> { %>
+            <div class="data">
+                <a href="/spots/info/<%=data.contentsid%>">
+                    <div><img src='<%= data.thumbnailpath%>'></div>
+                    <div>
+                        <%= data.title%>
+                    </div>
+                    <div>
+                        <%= data.introduction%>
+                    </div>
+                    <div>
+                        <%= data.address%>
+                    </div>
+                </a>
+                <div>
+                    <% data.tag.forEach(tag=> { %>
+                        <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
+                        <% }) %>
+                </div>
+            </div>
+            <% })%>
+    </div>
+</body>
+
+</html>

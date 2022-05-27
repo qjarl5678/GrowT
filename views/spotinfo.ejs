@@ -15,7 +15,7 @@
     <div><%=spotInfo.introduction%></div>
     <div>
         <% spotInfo.tag.forEach(tag=> { %>
-            <span>#<%= tag %></span>
+            <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
             <% }) %>
     </div>
     <div><%= spotInfo.address%></div>

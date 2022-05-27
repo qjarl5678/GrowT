@@ -27,7 +27,7 @@
                 </a>
                 <div>
                     <% data.tag.forEach(tag=> { %>
-                        <span>#<%= tag %></span>
+                        <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
                         <% }) %>
                 </div>
             </div>
@@ -82,7 +82,13 @@
 
         // 내용 가져오기 
         async function getContent(num) {
+
+            // 전체 리스트 10개씩 가져오기
             const data = await fetch(`/spots/${num}`);
+
+            /* 카테고리별 리스트 10개씩 가져오기 
+            const data = await fetch(`/spots/category/${num}?contentValue=c4`);
+            */
             return data.json();
         }
 
