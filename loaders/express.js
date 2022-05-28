@@ -9,34 +9,35 @@ import { config } from "../config/config.js";
 import { sequelize } from "../db/mysql.js";
 import { connectDB } from "../db/mongoose.js";
 import cookieParser from "cookie-parser";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
 
-// es6 이상 module에서는 __dirname 미제공으로 아래와같이 작성해야됨 
+// es6 이상 module에서는 __dirname 미제공으로 아래와같이 작성해야됨
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default async (app) => {
-
   const corsOptions = {
     origin: "*",
-    credentials:true
-  }
+    credentials: true,
+  };
 
   // 기본 미들웨어
   app.use(express.json());
-  app.use(express.urlencoded({ extended: false })); 
+  app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser()); // 쿠키 파서
   app.use(cors(corsOptions)); // cors 라이브러리
-  app.use(morgan('tiny'));  // 로깅 라이브러리
-  app.use(helmet({
-    contentSecurityPolicy:false,
-    crossOriginEmbedderPolicy:false,
-  }));
+  app.use(morgan("tiny")); // 로깅 라이브러리
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+      crossOriginEmbedderPolicy: false,
+    })
+  );
   // app.use(helmet.contentSecurityPolicy(config.csp));
 
-  // favicon 설정 
-  app.use(favicon(path.join(__dirname, '../public/img', 'favicon.ico')));
+  // favicon 설정
+  app.use(favicon(path.join(__dirname, "../public/img", "favicon.ico")));
 
   app.set("view engine", "ejs");
 
@@ -62,15 +63,17 @@ export default async (app) => {
     });
   });
 
-  // mysql 
+  // mysql
   sequelize.sync().then((client) => {
-    console.log('SuccessFully connected to mysql')
+    console.log("SuccessFully connected to mysql");
   });
 
   // mongoose
-  connectDB().then(()=> {
-    console.log('SuccessFully connected to mongodb');
-  }).catch(e => console.error(e));
+  connectDB()
+    .then(() => {
+      console.log("SuccessFully connected to mongodb");
+    })
+    .catch((e) => console.error(e));
 
   return app;
 };

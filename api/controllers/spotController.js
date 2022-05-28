@@ -1,4 +1,5 @@
 import * as spotModel from "../../models/spotModel.js";
+import * as spotLikeModel from "../../models/spotLikeModel.js";
 
 // 관광지 전체 리스트 불러오기
 export async function getSpotList(req, res) {
@@ -50,17 +51,29 @@ export async function getSearchNameSpots(req, res) {
   console.log(searchSpotsList);
 }
 
-export async function changeLike(req, res){
+// 좋아요 누르기
+export async function changeLike(req, res) {
   const userId = req.userId;
   const contentsId = req.params.contentsId;
   const info = {
-    userid : userId,
-    contentsId : contentsId
-  }
-  if(!userId){
-    res.send(`<script type="text/javascript">alert("로그인되지 않아 누를 수 없습니다"); window.location=history.go(-1);</script>`);
-  } else{
-    await spotModel.changeSpotLike(info);
+    userid: userId,
+    contentsid: contentsId,
+  };
+
+  // 만약 userId가 없으면 로그인되지 않아 누를 수 없다는 안내하기
+  if (!userId) {
+    res.send(
+      `<script type="text/javascript">alert("로그인되지 않아 누를 수 없습니다"); window.location=history.go(-1);</script>`
+    );
+  } else {
+    // 우선 사용자 ID와 관광지 ID로 조회해서 사용자가 좋아요를 누른적이 있었는지 체크해보기
+    const result = await spotLikeModel.checkSpotLike(info);
+    // 값이 없으면 데이터 추가
+    if (!result) {
+      await spotLikeModel.changeSpotLike(info);
+      // 있으면 데이터 삭제
+    } else {
+      await spotLikeModel.deleteSpotLike(info);
+    }
   }
 }
-
