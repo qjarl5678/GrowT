@@ -1,5 +1,5 @@
 import express from "express";
-import { isAuth } from "../../services/jwt.js";
+import { isAuth, isAuthCheck } from "../../services/jwt.js";
 import * as spotController from "../controllers/spotController.js";
 
 const router = express.Router();
@@ -20,6 +20,8 @@ router.get("/tag/:tagId", spotController.getTagSpots);
 router.get("/search/:name", spotController.getSearchNameSpots);
 
 // 관광지 ID를 기준으로 1개만 가져오기
-router.get("/info/:contentsid", spotController.getSpotOne);
+router.get("/info/:contentsId", spotController.getSpotOne);
+
+router.get("/like/:contentsId", isAuthCheck, spotController.changeLike);
 
 export default router;

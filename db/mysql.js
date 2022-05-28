@@ -10,15 +10,3 @@ export const sequelize = new SQ.Sequelize(database, user, password, {
   dialect:'mysql',
   port,
 });
-
-/* 기본 mysql2 이용할 때
-export const pool = mysql.createPool({
-  host,
-  user,
-  database,
-  password,
-  port,
-});
-
-export const db = pool.promise();
-*/

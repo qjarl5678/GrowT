@@ -35,3 +35,23 @@ export const isAuth = async (req, res, next) => {
     next();
   });
 };
+
+// 쿠키 인증기반(인증은 하나 해당 페이지에서 로그인이 안되어있어도 되는 경우)
+export const isAuthCheck = async (req, res, next) => {
+  console.log(req.cookies);
+  const { accessToken } = req.cookies;
+  if (!accessToken) {
+    next()
+  }
+  jwt.verify(accessToken, secretKey, async (error, decoded) => {
+    if (error) {
+      return res.status(401).json(AUTH_ERROR);
+    }
+    const user = await userModel.findByUserId(decoded.id);
+    if (!user) {
+      return res.status(401).json(AUTH_ERROR);
+    }
+    req.userId = user.id; // req.customData
+    next();
+  });
+};

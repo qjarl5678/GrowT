@@ -31,8 +31,8 @@ export async function getCategorySpots(req, res) {
 
 // 관광지 ID를 기준으로 1개만 가져오기
 export async function getSpotOne(req, res) {
-  const contentsid = req.params.contentsid;
-  const spotInfo = await spotModel.getOneSpot(contentsid);
+  const contentsId = req.params.contentsId;
+  const spotInfo = await spotModel.getOneSpot(contentsId);
   res.render("spotinfo.ejs", { spotInfo: spotInfo[0] });
 }
 
@@ -49,3 +49,18 @@ export async function getSearchNameSpots(req, res) {
   const searchSpotsList = await spotModel.getSearchNameSpots(name);
   console.log(searchSpotsList);
 }
+
+export async function changeLike(req, res){
+  const userId = req.userId;
+  const contentsId = req.params.contentsId;
+  const info = {
+    userid : userId,
+    contentsId : contentsId
+  }
+  if(!userId){
+    res.send(`<script type="text/javascript">alert("로그인되지 않아 누를 수 없습니다"); window.location=history.go(-1);</script>`);
+  } else{
+    await spotModel.changeSpotLike(info);
+  }
+}
+

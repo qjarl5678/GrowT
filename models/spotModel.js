@@ -37,8 +37,8 @@ export async function getCategorySpots(num, contentValue) {
 }
 
 // 관광지 ID를 기준으로 1개만 가져오기
-export async function getOneSpot(contentsid) {
-  return await Tour.find({ contentsid: contentsid });
+export async function getOneSpot(contentsId) {
+  return await Tour.find({ contentsid: contentsId });
 }
 
 // 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트만 가져오기
