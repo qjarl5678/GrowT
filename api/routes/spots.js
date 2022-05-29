@@ -34,4 +34,11 @@ router.get("/info/:contentsId", isAuthCheck, spotController.getSpotOne);
 // 좋아요 눌려있는지 확인하여 눌려있으면 추가, 안눌려있으면 삭제 처리
 router.get("/like/:contentsId", isAuthCheck, spotController.changeLike);
 
+// 지도 페이지 띄우기
+router.get("/map/page", isAuthCheck, spotController.getMapPage);
+
+// 지도 데이터 불러오기
+router.get("/map/page/data", isAuthCheck, spotController.getMapData);
+
+
 export default router;

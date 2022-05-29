@@ -12,6 +12,17 @@ export async function getSpotList(req, res) {
   // res.status(200).json(spotLists); // React사용시
 }
 
+// 관광지 전체 리스트 불러오기
+export async function getSpotList100(req, res) {
+  const spotList = await spotModel.getSpotList();
+  res.render("spotlist.ejs", {
+    spotList: spotList,
+    method: "all",
+    value: "none",
+  });
+  // res.status(200).json(spotLists); // React사용시
+}
+
 // 카테고리 별 리스트 불러오기(c1:관광지, c3:숙박, c4:음식점)
 export async function getCategoryList(req, res) {
   const contentsValue = req.params.contentsValue;
@@ -45,14 +56,13 @@ export async function getCategorySpots(req, res) {
 export async function getLimitTagSpots(req, res) {
   const num = req.params.num;
   let tagId = req.params.tagId;
-  let tagLast = '';
-  if(!req.params.tagLast){
-    
+  let tagLast = "";
+  if (!req.params.tagLast) {
   } else {
-    console.log('이거탐?');
+    console.log("이거탐?");
     console.log(req.params.tagLast);
     tagLast = req.params.tagLast;
-    tagId = tagId + '/' + tagLast;
+    tagId = tagId + "/" + tagLast;
   }
   // 넘버가 아닐 경우 해쉬태그 중 / 슬레쉬가 들어간 태그가 있으므로 해당 태그를 찾는 로직 작성
   if (isNaN(num)) {
@@ -123,4 +133,13 @@ export async function changeLike(req, res) {
       await spotLikeModel.deleteSpotLike(info);
     }
   }
+}
+
+export async function getMapPage(req, res) {
+  res.render("spotmap.ejs");
+}
+
+export async function getMapData(req, res) {
+  const spotList = await spotModel.getSpotList100();
+  res.status(200).json(spotList);
 }

@@ -14,9 +14,9 @@ async function startServer() {
 
   // 창현 로컬에서 key
   const options = {
-	  ca:fs.readFileSync('./Key/growingtrip.com.ca-bundle.pem'),
-	  key:fs.readFileSync('./Key/growingtrip.com.key.pem'),
-	  cert:fs.readFileSync('./Key/growingtrip.com.crt.pem'),
+	  ca:fs.readFileSync('./key/growingtrip.com.ca-bundle.pem'),
+	  key:fs.readFileSync('./key/growingtrip.com.key.pem'),
+	  cert:fs.readFileSync('./key/growingtrip.com.crt.pem'),
   	  minVersion:"TLSv1.2"
   }
 

@@ -23,7 +23,12 @@ const Tour = mongoose.model("Tour", spotSchema, "Tour");
 
 // 관광지 전체 리스트 불러오기
 export async function getSpotList() {
-  return await Tour.find({}).limit(10);
+  return await Tour.find({},{_id:0}).limit(10);
+}
+
+// 관광지 전체 리스트 불러오기
+export async function getSpotList100() {
+  return await Tour.find({},{_id:0}).limit(100);
 }
 
 // 관광지 전체 리스트 10개씩 순차적으로 가져오기

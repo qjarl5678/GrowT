@@ -1,0 +1,105 @@
+
+body {
+    max-width:400px;
+    width:100%;
+    margin: 0 auto;
+}
+
+*{
+    font-family: 'Noto Serif KR', serif;
+}
+
+a {
+    color:black;
+    text-decoration: none;
+}
+
+
+.main {
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+
+    #map {
+        max-width: 400px;
+        width:100%;
+        height: calc(100vh - 50px);
+    }
+
+    #mapContent {
+        display:none;
+        position: absolute;
+        border-radius: 10px;
+        bottom:105px;
+        width:85%;
+        height:100px;
+        background-color: white;
+
+        #mapImg {
+            width:30%;
+            height:100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width:80%;
+                height:80%;
+                border-radius: 10px;
+            }
+        }
+
+        #mapContents {
+            width:70%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            font-size:9px;
+            padding:3px;
+
+            #spotHeader {
+                font-size:11px;
+                font-weight: bold;
+            }
+
+            #spotaddress {
+                color:silver;
+            }
+        }
+    }
+}
+
+
+#Footer {        
+    padding: 10px;
+    margin-top: 5%;
+
+    .bottom_menu {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width:100%;
+        height: 50px;
+        z-index: 100;
+        border-top: 0.5px solid #e7e7e7;
+        background-color: #fff;
+    }
+
+    .bottom_menu>div {
+        float: left;
+        width: 20%;
+        height: 100%;
+        text-align: center;
+        padding-top: 13px;
+    }
+
+    .bottom_menu>div>i {
+        opacity: 0.3;
+    }
+
+    .bottom_menu>div>.selected {
+        opacity: 1;
+    }
+}

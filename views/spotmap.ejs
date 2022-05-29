@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>관광지 지도</title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+    <link href="/css/spotmap.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div id="map"></div>
+        <div id="mapContent" value="nonClick">
+            <div id="mapImg"><img src="" id="mapContentImg"></div>
+            <div id="mapContents">
+                <div id="spotHeader"></div>
+                <div id="spotContent"></div>
+                <div id="spotaddress"></div>
+            </div>
+
+        </div>
+    </div>
+    <div id="Footer">
+
+        <div class="bottom_menu">
+            <div>
+                <i class="fa-solid fa-house selected"></i>
+            </div>
+            <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div>
+                <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+            </div>
+            <div>
+                <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+            </div>
+            <div>
+                <i class="fa-solid fa-gear"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function start() {
+            let spotList = await getData();
+            console.log(spotList);
+            let mapContent = document.getElementById("mapContent");
+            let mapContentImg = document.getElementById("mapContentImg");
+            let spotHeader = document.getElementById("spotHeader");
+            let spotContent = document.getElementById("spotContent");
+            let spotaddress = document.getElementById("spotaddress");
+
+            let mapOptions = {
+                center: new naver.maps.LatLng(33.35, 126.54039),
+                zoom: 9
+            };
+
+            let map = new naver.maps.Map('map', mapOptions);
+
+
+            for (let i = 0; i < spotList.length; i++) {
+                let longitude = spotList[i].longitude;
+                let latitude = spotList[i].latitude;
+                let marker = new naver.maps.Marker({
+                    map: map,
+                    position: new naver.maps.LatLng(latitude, longitude),
+                })
+                let content = '<div style="width:200px; height:70px; border-style:none">' + spotList[i].title + '</div>';
+
+                naver.maps.Event.addListener(marker, "click", function (e) {
+                    if (mapContent.value === 'nonClick') {
+                        mapContent.style.display = 'flex';
+                        mapContentImg.src = spotList[i].thumbnailpath;
+                        spotHeader.innerHTML = spotList[i].title;
+                        spotContent.innerHTML = spotList[i].introduction;
+                        spotaddress.innerHTML = spotList[i].address;
+                        mapContent.value = 'Click';
+                    } else {
+                        mapContent.style.display = 'none';
+                        mapContent.value = 'nonClick';
+                    }
+                });
+            }
+        }
+
+
+        async function getData() {
+            const data = await fetch('/spots/map/page/data')
+            return data.json();
+        }
+
+        start();
+    </script>
+</body>
+
+</html>
