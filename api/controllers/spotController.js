@@ -4,7 +4,11 @@ import * as spotLikeModel from "../../models/spotLikeModel.js";
 // 관광지 전체 리스트 불러오기
 export async function getSpotList(req, res) {
   const spotList = await spotModel.getSpotList();
-  res.render("spotlist.ejs", { spotList: spotList, method:'all', value:'none'});
+  res.render("spotlist.ejs", {
+    spotList: spotList,
+    method: "all",
+    value: "none",
+  });
   // res.status(200).json(spotLists); // React사용시
 }
 
@@ -13,7 +17,11 @@ export async function getCategoryList(req, res) {
   const contentsValue = req.params.contentsValue;
   const categoryList = await spotModel.getCategoryList(contentsValue);
   console.log(categoryList + contentsValue);
-  res.render("spotlist.ejs", { spotList: categoryList, method:'category', value:contentsValue});
+  res.render("spotlist.ejs", {
+    spotList: categoryList,
+    method: "category",
+    value: contentsValue,
+  });
   // res.status(200).json(categoryList); // React사용시
 }
 
@@ -37,9 +45,22 @@ export async function getCategorySpots(req, res) {
 export async function getLimitTagSpots(req, res) {
   const num = req.params.num;
   const tagId = req.params.tagId;
-  const spotNum = num * 10;
-  const spotList = await spotModel.getLimitTagSpots(spotNum, tagId);
-  res.status(200).json(spotList);
+  console.log('실행됨');
+  // 넘버가 아닐 경우 해쉬태그 중 / 슬레쉬가 들어간 태그가 있으므로 해당 태그를 찾는 로직 작성
+  if (isNaN(num)) {
+    const data = num + "/" + tagId;
+    const tagSpotsList = await spotModel.getTagSpots(data);
+    res.render("spotlist.ejs", {
+      spotList: tagSpotsList,
+      method: "tag",
+      value: data,
+    });
+    // 아닐 경우 원래 로직대로 10개씩 찾는걸로
+  } else {
+    const spotNum = num * 10;
+    const spotList = await spotModel.getLimitTagSpots(spotNum, tagId);
+    res.status(200).json(spotList);
+  }
 }
 
 // 관광지 ID를 기준으로 1개만 가져오기
@@ -54,7 +75,11 @@ export async function getSpotOne(req, res) {
 export async function getTagSpots(req, res) {
   const tagId = req.params.tagId;
   const tagSpotsList = await spotModel.getTagSpots(tagId);
-  res.render("spotlist.ejs", { spotList: tagSpotsList, method:'tag', value:tagId});
+  res.render("spotlist.ejs", {
+    spotList: tagSpotsList,
+    method: "tag",
+    value: tagId,
+  });
   // res.status(200).json(tagSpotsList); // React사용시
 }
 

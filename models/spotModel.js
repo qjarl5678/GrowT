@@ -49,12 +49,12 @@ export async function getOneSpot(contentsId) {
 
 // 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트만 가져오기
 export async function getTagSpots(tagId) {
+  console.log(tagId);
   return await Tour.find({ tag: { $in: tagId } }).limit(10);
 }
 
 // 카테고리 별 리스트 불러오기(c1:관광지, c3:숙박, c4:음식점)
 export async function getCategoryList(contentValue) {
-  console.log('asdf : '+ contentValue);
   return await Tour.find({ contentsvalue: contentValue }).limit(10);
 }
 
