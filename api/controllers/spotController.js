@@ -44,8 +44,16 @@ export async function getCategorySpots(req, res) {
 
 export async function getLimitTagSpots(req, res) {
   const num = req.params.num;
-  const tagId = req.params.tagId;
-  console.log('실행됨');
+  let tagId = req.params.tagId;
+  let tagLast = '';
+  if(!req.params.tagLast){
+    
+  } else {
+    console.log('이거탐?');
+    console.log(req.params.tagLast);
+    tagLast = req.params.tagLast;
+    tagId = tagId + '/' + tagLast;
+  }
   // 넘버가 아닐 경우 해쉬태그 중 / 슬레쉬가 들어간 태그가 있으므로 해당 태그를 찾는 로직 작성
   if (isNaN(num)) {
     const data = num + "/" + tagId;

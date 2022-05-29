@@ -22,6 +22,9 @@ router.get("/tag/:tagId", isAuthCheck, spotController.getTagSpots);
 // 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트 10개씩 가져오기
 router.get("/tag/:num/:tagId", isAuthCheck, spotController.getLimitTagSpots);
 
+// 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트 10개씩 가져오기
+router.get("/tag/:num/:tagId/:tagLast", isAuthCheck, spotController.getLimitTagSpots);
+
 // 이름을 기준으로 포함된 리스트 가져오기
 router.get("/search/:name", isAuthCheck, spotController.getSearchNameSpots);
 
