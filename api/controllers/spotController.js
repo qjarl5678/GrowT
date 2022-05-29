@@ -4,7 +4,7 @@ import * as spotLikeModel from "../../models/spotLikeModel.js";
 // 관광지 전체 리스트 불러오기
 export async function getSpotList(req, res) {
   const spotList = await spotModel.getSpotList();
-  res.render("spotlist.ejs", { spotList: spotList });
+  res.render("spotlist.ejs", { spotList: spotList, method:'all', value:'none'});
   // res.status(200).json(spotLists); // React사용시
 }
 
@@ -12,7 +12,9 @@ export async function getSpotList(req, res) {
 export async function getCategoryList(req, res) {
   const contentsValue = req.params.contentsValue;
   const categoryList = await spotModel.getCategoryList(contentsValue);
-  res.status(200).json(categoryList); // React사용시
+  console.log(categoryList + contentsValue);
+  res.render("spotlist.ejs", { spotList: categoryList, method:'category', value:contentsValue});
+  // res.status(200).json(categoryList); // React사용시
 }
 
 // 관광지 전체 리스트 10개씩 순차적으로 가져오기
@@ -26,9 +28,17 @@ export async function getSpots(req, res) {
 // 관광지 전체 카테고리별로 10개씩 순차적으로 가져오기
 export async function getCategorySpots(req, res) {
   const num = req.params.num;
-  const contentValue = req.query.contentValue;
+  const contentValue = req.params.contentsValue;
   const spotNum = num * 10;
   const spotList = await spotModel.getCategorySpots(spotNum, contentValue);
+  res.status(200).json(spotList);
+}
+
+export async function getLimitTagSpots(req, res) {
+  const num = req.params.num;
+  const tagId = req.params.tagId;
+  const spotNum = num * 10;
+  const spotList = await spotModel.getLimitTagSpots(spotNum, tagId);
   res.status(200).json(spotList);
 }
 
@@ -44,7 +54,7 @@ export async function getSpotOne(req, res) {
 export async function getTagSpots(req, res) {
   const tagId = req.params.tagId;
   const tagSpotsList = await spotModel.getTagSpots(tagId);
-  res.render("spottaglist.ejs", { spotList: tagSpotsList });
+  res.render("spotlist.ejs", { spotList: tagSpotsList, method:'tag', value:tagId});
   // res.status(200).json(tagSpotsList); // React사용시
 }
 

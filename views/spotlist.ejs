@@ -6,24 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <script src="/js/spotlist"></script>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
     <link href="/css/spotlist.css" rel="stylesheet" type="text/css">
-    <title>spotlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <title>관광지</title>
 </head>
 
 <body>
+    <div class="header">
+        <div class="header_name">
+            <span id="header_name">전체</span>
+        </div>
+        <div class="categoryBtn">
+            <div><i class="fa-solid fa-ellipsis-vertical" onclick="categoryList()" value="nonclick"></i></div>
+            <ul id="categoryL">
+                <li><a href="/spots">전체</a></li>
+                <li><a href="/spots/category/c1">관광지</a></li>
+                <li><a href="/spots/category/c4">음식점</a></li>
+                <li><a href="/spots/category/c3">숙박</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="main">
         <% spotList.forEach(data=> { %>
             <div class="data">
                 <a href="/spots/info/<%=data.contentsid%>">
-                    <div><img src='<%= data.thumbnailpath%>'></div>
-                    <div>
+                    <div class="img"><img src='<%= data.thumbnailpath%>'></div>
+                    <div class="spotLike">
+                        <i class="fa-solid fa-heart"></i> 233
+                    </div>
+                    <div class="spotTitle">
                         <%= data.title%>
                     </div>
-                    <div>
+                    <div class="spotIntroduction">
                         <%= data.introduction%>
                     </div>
-                    <div>
+                    <div class="spotAddress">
                         <%= data.address%>
                     </div>
                 </a>
@@ -35,5 +55,28 @@
             </div>
             <% })%>
     </div>
+    <div id="Footer">
+        <div class="bottom_menu">
+            <div>
+                <i class="fa-solid fa-house selected"></i>
+            </div>
+            <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div>
+                <a href="/spots"><i class="fa-solid fa-map-location-dot"></i></a>
+            </div>
+            <div>
+                <i class="fa-solid fa-gear"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        const method = '<%=method%>';
+        const value = '<%=value%>';
+
+    </script>
+    <script src="/js/spotlist.js"></script>
 </body>
+
 </html>

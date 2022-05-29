@@ -1,42 +1,96 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>간단한 지도 표시하기</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>관광지 상세보기</title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+
+    <link href="/css/spotinfo.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<div class="main">
-    <div><%=spotInfo.title%></div>
-    <div><%=spotInfo.spotcontentslabel%></div>
-    <div><img src="<%=spotInfo.imgpath%>"></div>
-    <div><%=spotInfo.introduction%></div>
-    <div>
-        <% spotInfo.tag.forEach(tag=> { %>
-            <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
-            <% }) %>
+    <div class="main">
+        <div class="data">
+            <div class="spotImg"><img src="<%=spotInfo.imgpath%>">
+                <div class="spotLikeImg"><i class="fa-solid fa-heart"></i> 233</div>
+            </div>
+            <div class="spotTitle">
+                <div><%=spotInfo.title%></div>
+                <div><a href="/spots/like/<%=spotInfo.contentsid%>"><i class="fa-solid fa-heart"></i></a></div>
+            </div>
+            <div class="spotIntroduction">
+                <%=spotInfo.introduction%>
+            </div>
+            <div class="subTitle">
+                정보
+            </div>
+            <div class="subsubTitle">
+                카테고리
+            </div>
+            <div class="spotContentsLabel">
+                <a href="/spots/category/<%=spotInfo.contentsvalue%>"><%=spotInfo.contentslabel%></a>
+            </div>
+            <div class="subsubTitle">
+                관련 태그
+            </div>
+            <div class="spotTag">
+                <% spotInfo.tag.forEach(tag=> { %>
+                    <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
+                    <% }) %>
+            </div>
+            <div class="subsubTitle">
+                주소
+            </div>
+            <div>
+                <%= spotInfo.address%>
+            </div>
+            <div class="subsubTitle">
+                지도
+            </div>
+            <div id="map"></div>
+        </div>
     </div>
-    <div><%= spotInfo.address%></div>
-    <div id="map" style="width:400px;height:200px;"></div>
-    <div><a href="/spots/like/<%=spotInfo.contentsid%>">좋아요</a></div>
-</div>
-<script>
-let lat = '<%=spotInfo.latitude%>';
-let lng = '<%=spotInfo.longitude%>';
-let coord = new naver.maps.LatLng(lat,lng);
+    <div id="Footer">
+        <div class="bottom_menu">
+            <div>
+                <i class="fa-solid fa-house selected"></i>
+            </div>
+            <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div>
+                <a href="/spots"><i class="fa-solid fa-map-location-dot"></i></a>
+            </div>
+            <div>
+                <i class="fa-solid fa-gear"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        let lat = '<%=spotInfo.latitude%>';
+        let lng = '<%=spotInfo.longitude%>';
+        let coord = new naver.maps.LatLng(lat, lng);
 
-let mapOptions = {
-    center: coord,
-    zoom: 16
-};
-let map = new naver.maps.Map('map', mapOptions);
+        let mapOptions = {
+            center: coord,
+            zoom: 16
+        };
+        let map = new naver.maps.Map('map', mapOptions);
 
-let marker = new naver.maps.Marker({
-    map:map,
-    position: coord
-})
-</script>
+        let marker = new naver.maps.Marker({
+            map: map,
+            position: coord
+        })
+    </script>
 </body>
+
 </html>

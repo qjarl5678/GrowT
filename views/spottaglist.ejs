@@ -10,29 +10,33 @@
 </head>
 
 <body>
-    <div class="main">
-        <% spotList.forEach(data=> { %>
-            <div class="data">
-                <a href="/spots/info/<%=data.contentsid%>">
-                    <div><img src='<%= data.thumbnailpath%>'></div>
-                    <div>
-                        <%= data.title%>
+    <div id="root">
+        <div class="App">
+            <div class="main">
+                <% spotList.forEach(data=> { %>
+                    <div class="data">
+                        <a href="/spots/info/<%=data.contentsid%>">
+                            <div><img src='<%= data.thumbnailpath%>'></div>
+                            <div>
+                                <%= data.title%>
+                            </div>
+                            <div>
+                                <%= data.introduction%>
+                            </div>
+                            <div>
+                                <%= data.address%>
+                            </div>
+                        </a>
+                        <div>
+                            <% data.tag.forEach(tag=> { %>
+                                <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
+                                <% }) %>
+                        </div>
                     </div>
-                    <div>
-                        <%= data.introduction%>
-                    </div>
-                    <div>
-                        <%= data.address%>
-                    </div>
-                </a>
-                <div>
-                    <% data.tag.forEach(tag=> { %>
-                        <span><a href="/spots/tag/<%=tag%>">#<%= tag %></a></span>
-                        <% }) %>
-                </div>
+                    <% })%>
             </div>
-            <% })%>
+
+        </div>
     </div>
 </body>
-
 </html>

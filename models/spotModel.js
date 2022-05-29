@@ -36,6 +36,12 @@ export async function getCategorySpots(num, contentValue) {
   return await Tour.find({ contentsvalue: contentValue }).skip(num).limit(10);
 }
 
+// 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트 10개씩 가져오기
+export async function getLimitTagSpots(num, tagId) {
+  console.log('num : ' + num);
+  return await Tour.find({ tag: { $in: tagId } }).skip(num).limit(10);
+}
+
 // 관광지 ID를 기준으로 1개만 가져오기
 export async function getOneSpot(contentsId) {
   return await Tour.find({ contentsid: contentsId });
@@ -43,12 +49,13 @@ export async function getOneSpot(contentsId) {
 
 // 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트만 가져오기
 export async function getTagSpots(tagId) {
-  return await Tour.find({ tag: { $in: tagId } });
+  return await Tour.find({ tag: { $in: tagId } }).limit(10);
 }
 
 // 카테고리 별 리스트 불러오기(c1:관광지, c3:숙박, c4:음식점)
 export async function getCategoryList(contentValue) {
-  return await Tour.find({ contentsvalue: contentValue });
+  console.log('asdf : '+ contentValue);
+  return await Tour.find({ contentsvalue: contentValue }).limit(10);
 }
 
 // 이름을 기준으로 포함된 리스트 가져오기

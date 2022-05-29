@@ -11,10 +11,16 @@ router.get("/", isAuthCheck, spotController.getSpotList);
 router.get("/:num", isAuthCheck, spotController.getSpots);
 
 // 관광지 전체 카테고리별로 10개씩 순차적으로 가져오기
-router.get("/category/:num", isAuthCheck, spotController.getCategorySpots);
+router.get("/category/:contentsValue", isAuthCheck, spotController.getCategoryList);
+
+// 관광지 전체 카테고리별로 10개씩 순차적으로 가져오기
+router.get("/category/:num/:contentsValue", isAuthCheck, spotController.getCategorySpots);
 
 // 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트만 가져오기
 router.get("/tag/:tagId", isAuthCheck, spotController.getTagSpots);
+
+// 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트 10개씩 가져오기
+router.get("/tag/:num/:tagId", isAuthCheck, spotController.getLimitTagSpots);
 
 // 이름을 기준으로 포함된 리스트 가져오기
 router.get("/search/:name", isAuthCheck, spotController.getSearchNameSpots);

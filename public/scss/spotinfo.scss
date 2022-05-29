@@ -1,0 +1,135 @@
+body {
+    margin:0px;
+}
+
+*{
+    font-family: 'Noto Serif KR', serif;
+}
+
+a {
+    color:black;
+    text-decoration: none;
+}
+
+.main {
+    margin-top:40px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .data {
+        margin-top:30px;
+        max-width:400px;
+        width:100%;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+
+        .spotImg {
+            position:relative;
+
+            .spotLikeImg {
+                position:absolute;
+                bottom:20px;
+                right:20px;
+                font-size:14px;
+                color:white;
+
+                i {
+                    color:pink;
+                    margin-right:3px;
+                }
+
+            }
+    
+        }
+        img {
+            border-radius: 15px;
+            max-width:400px;
+            width:100%;
+            height:100%;
+        }
+        #map {
+            border-radius: 15px;
+            max-width:400px;
+            width:90%;
+            height:200px;
+        }
+
+        .spotTitle {
+            margin-top:20px;
+            padding:10px 0px;
+            font-size:25px;
+            font-weight: bold;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color:#efefef;
+            margin-bottom:15px;
+            display:flex;
+            justify-content: space-between;
+
+            i {
+                font-size:22px;
+                color:silver;
+            }
+        }
+        .spotTag {
+            span a {color:silver;
+            }
+        }
+
+        .subTitle {
+            margin-top:20px;
+            font-size:22px;
+            font-weight: bold;
+            padding:10px 0px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color:#efefef;
+        }
+
+        .subsubTitle {
+            margin-top:20px;
+            margin-bottom:3px;
+            font-size:16px;
+            font-weight: bold;
+        }
+    }
+    .data > div {
+        width:90%;
+        
+    }
+}
+
+#Footer {        
+    padding: 10px;
+    margin-top: 5%;
+
+    .bottom_menu {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width:100%;
+        height: 50px;
+        z-index: 100;
+        border-top: 0.5px solid #e7e7e7;
+        background-color: #fff;
+    }
+
+    .bottom_menu>div {
+        float: left;
+        width: 25%;
+        height: 100%;
+        text-align: center;
+        padding-top: 13px;
+    }
+
+    .bottom_menu>div>i {
+        opacity: 0.3;
+    }
+
+    .bottom_menu>div>.selected {
+        opacity: 1;
+    }
+}
