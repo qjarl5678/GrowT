@@ -33,7 +33,7 @@ a {
   height: calc(100vh - 50px);
 }
 
-.main #mapContent {
+.main #map_a {
   display: none;
   position: absolute;
   border-radius: 10px;
@@ -41,6 +41,12 @@ a {
   width: 85%;
   height: 100px;
   background-color: white;
+}
+
+.main #mapContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .main #mapContent #mapImg {
@@ -64,7 +70,7 @@ a {
 }
 
 .main #mapContent #mapContents {
-  width: 70%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -19,15 +19,17 @@
 <body>
     <div class="main">
         <div id="map"></div>
-        <div id="mapContent" value="nonClick">
-            <div id="mapImg"><img src="" id="mapContentImg"></div>
-            <div id="mapContents">
-                <div id="spotHeader"></div>
-                <div id="spotContent"></div>
-                <div id="spotaddress"></div>
+        <a href="" id="map_a" vale="nonClick">
+            <div id="mapContent">
+                <div id="mapImg"><img src="" id="mapContentImg"></div>
+                <div id="mapContents">
+                    <div id="spotHeader"></div>
+                    <div id="spotContent"></div>
+                    <div id="spotaddress"></div>
+                </div>
             </div>
-
-        </div>
+        </a>
+    </div>
     </div>
     <div id="Footer">
 
@@ -54,6 +56,7 @@
             let spotList = await getData();
             console.log(spotList);
             let mapContent = document.getElementById("mapContent");
+            let map_a = document.getElementById("map_a");
             let mapContentImg = document.getElementById("mapContentImg");
             let spotHeader = document.getElementById("spotHeader");
             let spotContent = document.getElementById("spotContent");
@@ -77,16 +80,17 @@
                 let content = '<div style="width:200px; height:70px; border-style:none">' + spotList[i].title + '</div>';
 
                 naver.maps.Event.addListener(marker, "click", function (e) {
-                    if (mapContent.value === 'nonClick') {
-                        mapContent.style.display = 'flex';
+                    if (map_a.value === 'nonClick') {
+                        map_a.style.display = 'flex';
                         mapContentImg.src = spotList[i].thumbnailpath;
+                        map_a.href = `/spots/info/${spotList[i].contentsid}`;
                         spotHeader.innerHTML = spotList[i].title;
                         spotContent.innerHTML = spotList[i].introduction;
                         spotaddress.innerHTML = spotList[i].address;
                         mapContent.value = 'Click';
                     } else {
-                        mapContent.style.display = 'none';
-                        mapContent.value = 'nonClick';
+                        map_a.style.display = 'none';
+                        map_a.value = 'nonClick';
                     }
                 });
             }
