@@ -22,6 +22,7 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "node-fetch": "^3.2.4",
     "sequelize": "^6.19.0",
     "serve-favicon": "^2.5.0"
   }

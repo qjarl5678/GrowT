@@ -1,52 +1,73 @@
 import { sequelize } from "../db/mysql.js";
-import SQ from 'sequelize';
+import SQ from "sequelize";
 const DataTypes = SQ.DataTypes;
 
-export const User = sequelize.define('users', {
-  userId: {
-    type: DataTypes.STRING(50),
-    primaryKey: true,
+export const User = sequelize.define(
+  "users",
+  {
+    userId: {
+      type: DataTypes.STRING(50),
+      primaryKey: true,
+    },
+    userPw: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    userName: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    userMail: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    userBirth: {
+      type: DataTypes.STRING(40),
+      allowNull: false,
+    },
+    userGender: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
+    userAddr1: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    userAddr2: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    regDate: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   },
-  userPw : {
-    type : DataTypes.STRING(100),
-    allowNull: false,
-  }, 
-  userName : {
-    type : DataTypes.STRING(50),
-    allowNull: false,
-  }, 
-  userMail : {
-    type : DataTypes.STRING(100),
-    allowNull: false,
-  }, 
-  userAddr1 : {
-    type : DataTypes.STRING(100),
-    allowNull: false,
-  }, 
-  userAddr2 : {
-    type : DataTypes.STRING(100),
-    allowNull: false,
-  }, 
-  regDate : {
-    type : DataTypes.DATE,
-    allowNull: false,
-  }, 
-}, { timestamps:false});
+  { timestamps: false }
+);
 
-export async function createUser(user){
-  return User.create(user).then(data => {console.log(data); return data;}).catch((err) => {console.log(err)});
+export async function createUser(user) {
+  return User.create(user)
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
-export async function findByUserId(userId){
-  return User.findOne({ where:{userId}});
+export async function findByUserId(userId) {
+  return User.findOne({ where: { userId } })
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
-export async function getUserList(){
+export async function getUserList() {
   return User.findAll({});
 }
-
-
-
 
 // import { db } from "../db/mysql.js";
 

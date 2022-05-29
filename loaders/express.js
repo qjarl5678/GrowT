@@ -25,6 +25,7 @@ export default async (app) => {
   // 기본 미들웨어
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
+  app.use(express.static('/public'));
   app.use(cookieParser()); // 쿠키 파서
   app.use(cors(corsOptions)); // cors 라이브러리
   app.use(morgan("tiny")); // 로깅 라이브러리
