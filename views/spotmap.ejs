@@ -54,7 +54,6 @@
     <script>
         async function start() {
             let spotList = await getData();
-            console.log(spotList);
             let mapContent = document.getElementById("mapContent");
             let map_a = document.getElementById("map_a");
             let mapContentImg = document.getElementById("mapContentImg");
@@ -73,14 +72,50 @@
             for (let i = 0; i < spotList.length; i++) {
                 let longitude = spotList[i].longitude;
                 let latitude = spotList[i].latitude;
-                let marker = new naver.maps.Marker({
-                    map: map,
-                    position: new naver.maps.LatLng(latitude, longitude),
-                })
-                let content = '<div style="width:200px; height:70px; border-style:none">' + spotList[i].title + '</div>';
+                let contentsValue = spotList[i].contentsvalue
+                let marker ='';
+                //관광지
+                if (contentsValue === 'c1') {
+                    marker = new naver.maps.Marker({
+                        map: map,
+                        position: new naver.maps.LatLng(latitude, longitude),
+                        icon: {
+                            content:'<img src="/img/forest.png" style="width:32px; height:32px;"/>',
+                            size: new naver.maps.Size(32, 32),
+                           anchor: new naver.maps.Point(16, 32)
+                        }
+                    })
+                    // 숙박
+                } else if (contentsValue === 'c3') {
+                    marker = new naver.maps.Marker({
+                        map: map,
+                        position: new naver.maps.LatLng(latitude, longitude),
+                        icon: {
+                            content:'<img src="/img/home.png" style="width:32px; height:32px;"/>',
+                            size: new naver.maps.Size(32, 32),
+                           anchor: new naver.maps.Point(16, 32)
+                        }
+                    })
+                    // 음식점
+                } else {
+                    marker = new naver.maps.Marker({
+                        map: map,
+                        position: new naver.maps.LatLng(latitude, longitude),
+                        icon: {
+                            content:'<img src="/img/fast-food.png" style="width:32px; height:32px;"/>',
+                            size: new naver.maps.Size(32, 32),
+                           anchor: new naver.maps.Point(16, 32)
+                            // origin: new naver.maps.Point(0, 0),
+                            // anchor: new naver.maps.Point(25, 26)
+                        }
+                    })
+                }
 
                 naver.maps.Event.addListener(marker, "click", function (e) {
                     if (map_a.value === 'nonClick') {
+
+                        map.setCenter(new naver.maps.LatLng(latitude, longitude));
+                        map.setZoom(13, true);
                         map_a.style.display = 'flex';
                         mapContentImg.src = spotList[i].thumbnailpath;
                         map_a.href = `/spots/info/${spotList[i].contentsid}`;
