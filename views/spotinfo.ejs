@@ -16,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="main">
         <div id="back">
@@ -24,11 +23,11 @@
         </div>
         <div class="data">
             <div class="spotImg"><img src="<%=spotInfo.imgpath%>">
-                <div class="spotLikeImg"><i class="fa-solid fa-heart"></i> 233</div>
+                <div class="spotLikeImg"><i class="fa-solid fa-heart" ></i> 233</div>
             </div>
             <div class="spotTitle">
                 <div><%=spotInfo.title%></div>
-                <div><a href="/spots/like/<%=spotInfo.contentsid%>"><i class="fa-solid fa-heart"></i></a></div>
+                <div><a onclick="changeLike();"><i class="fa-solid fa-heart" id="heart"></i></a></div>
             </div>
             <div class="spotIntroduction">
                 <%=spotInfo.introduction%>
@@ -84,6 +83,8 @@
     <script>
         let lat = '<%=spotInfo.latitude%>';
         let lng = '<%=spotInfo.longitude%>';
+        let method = '<%=method%>';
+        let heart = document.getElementById('heart');
         let coord = new naver.maps.LatLng(lat, lng);
 
         let mapOptions = {
@@ -96,6 +97,31 @@
             map: map,
             position: coord
         })
+
+        if(method==='on'){
+            heart.style.color = 'pink';
+        }else{
+            heart.style.color = 'silver';
+        }
+    
+
+
+        async function changeLike(){
+            let result = await fetch("/spots/like/<%=spotInfo.contentsid%>");
+            let heart = document.getElementById('heart');
+            result = await result.json();
+            // 좋아요가 안눌러져있었을 때
+            if(result.result === 1){
+                heart.style.color = 'pink';
+                // 좋아요가 눌러져있었을 때
+            }else if(result.result ===2){
+                heart.style.color = 'silver';
+                // 로그인이 안되어있을 때 
+            }else{
+                alert("로그인이 되어있지않아 처리할 수 없습니다.");
+            }
+        }
+        
     </script>
 </body>
 

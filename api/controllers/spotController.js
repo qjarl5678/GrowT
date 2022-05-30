@@ -59,7 +59,6 @@ export async function getLimitTagSpots(req, res) {
   let tagLast = "";
   if (!req.params.tagLast) {
   } else {
-    console.log("이거탐?");
     console.log(req.params.tagLast);
     tagLast = req.params.tagLast;
     tagId = tagId + "/" + tagLast;
@@ -83,9 +82,23 @@ export async function getLimitTagSpots(req, res) {
 
 // 관광지 ID를 기준으로 1개만 가져오기
 export async function getSpotOne(req, res) {
+  const userId = req.userId;
   const contentsId = req.params.contentsId;
-  const spotInfo = await spotModel.getOneSpot(contentsId);
-  res.render("spotinfo.ejs", { spotInfo: spotInfo[0] });
+  const info = {
+    userid: userId,
+    contentsid: contentsId,
+  };
+  let spotInfo = await spotModel.getOneSpot(contentsId);
+  let method = '';
+  if (userId) {
+    const result = await spotLikeModel.checkSpotLike(info);
+    if(result){
+      method ='on';
+    }else{
+       method='off';
+    }
+  } 
+  res.render("spotinfo.ejs", { spotInfo: spotInfo[0], method});
   // res.status(200).json(spotInfo[0]); // React사용시
 }
 
@@ -119,18 +132,18 @@ export async function changeLike(req, res) {
 
   // 만약 userId가 없으면 로그인되지 않아 누를 수 없다는 안내하기
   if (!userId) {
-    res.send(
-      `<script type="text/javascript">alert("로그인되지 않아 누를 수 없습니다"); window.location=history.go(-1);</script>`
-    );
+    res.status(401).json({'result':3});
   } else {
     // 우선 사용자 ID와 관광지 ID로 조회해서 사용자가 좋아요를 누른적이 있었는지 체크해보기
     const result = await spotLikeModel.checkSpotLike(info);
     // 값이 없으면 데이터 추가
     if (!result) {
       await spotLikeModel.changeSpotLike(info);
+      res.status(200).json({'result':1});
       // 있으면 데이터 삭제
     } else {
       await spotLikeModel.deleteSpotLike(info);
+      res.status(200).json({'result':2});
     }
   }
 }
