@@ -5,6 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import users from "../api/routes/users.js";
 import spots from "../api/routes/spots.js";
+import main from "../api/routes/main.js";
 import { config } from "../config/config.js";
 import { sequelize } from "../db/mysql.js";
 import { connectDB } from "../db/mongoose.js";
@@ -43,6 +44,10 @@ export default async (app) => {
   app.set("view engine", "ejs");
 
   // 라우팅
+
+  //Index
+  app.use("/", main);
+
   // 유저 관련된
   app.use("/users", users);
   // 관광지 관련된

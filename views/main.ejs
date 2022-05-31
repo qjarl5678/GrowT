@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/css/_reset.css" rel="stylesheet" type="text/scss">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <title>GrowT</title>
+</head>
+<script>
+
+    var slideIndex = 0; //slide index
+
+    // HTML 로드가 끝난 후 동작
+    window.onload=function(){
+      showSlides(slideIndex);
+
+      // Auto Move Slide
+      var sec = 3000;
+      setInterval(function(){
+        slideIndex++;
+        showSlides(slideIndex);
+      }, sec);
+    }
+    // Next/previous controls
+    function moveSlides(n) {
+      slideIndex = slideIndex + n
+      showSlides(slideIndex);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      slideIndex = n;
+      showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+      var slides = document.getElementsByclass("mySlides");
+      var dots = document.getElementsByclass("dot");
+      var size = slides.length;
+      if ((n+1) > size) {
+        slideIndex = 0; n = 0;
+      }else if (n < 0) {
+        slideIndex = (size-1);
+        n = (size-1);
+      }
+
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].class = dots[i].class.replace(" active", "");
+      }
+
+      slides[n].style.display = "block";
+      dots[n].class += " active";
+    }
+  </script>
+<body>
+    
+    <div id="root">
+        <div id="header">
+            <h1 class="big_title">
+              <img src= '/img/growT_logo.png'></img>
+            </h1>
+        </div>
+        <div id="sidebar">
+            <h2>Category</h2>
+            <div class="slide-wrap">
+              <ul>
+                <li>
+                  <a href="/">
+                    <i class="fa-solid fa-bicycle"></i>
+                  </a>
+                  <p class="list-tit">자전거</p>
+                </li>
+                <li>
+                  <a href="/">
+                    <i class="fa-solid fa-bicycle"></i>
+                  </a>
+                  <p class="list-tit">자전거</p>
+                </li>
+                <li>
+                  <a href="/">
+                    <i class="fa-solid fa-bicycle"></i>
+                  </a>
+                  <p class="list-tit">자전거</p>
+                </li>
+                <li>
+                  <a href="/">
+                    <i class="fa-solid fa-bicycle"></i>
+                  </a>
+                  <p class="list-tit">자전거</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="content">
+            <div class="slideshow-container">
+              <div class="mySlides fade img1">
+                <div class="img">
+                  <img src="/img/ex_01.jpg" />
+                </div>
+                <div class="contents_txt">
+                  <span class="tit">1.제목입니다.</span>
+                  <span class="sub-tit">서브타이틀입니다.</span>
+                  <p>가나다라마바사</p>
+                </div>
+              </div>
+              <div class="mySlides fade img2">
+                <div class="img">
+                  <img src="/img/ex_01.jpg" />
+                </div>
+                <div class="contents_txt">
+                  <span class="tit">1.제목입니다.</span>
+                  <span class="sub-tit">서브타이틀입니다.</span>
+                  <p>가나다라마바사가나다라마바사가나사가나다라</p>
+                </div>
+              </div>
+              <div class="dot_bar">
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+          </div>
+          <div id="board">
+            <div class="board-tit">
+              <h2>Board</h2>
+              <a class="detail">
+              <i class="fa-solid fa-arrow-left"></i> 자세히 보기
+              </a>
+            </div>
+            <ul class="board-list">
+              <li>
+                <a href="/">
+                    <p>큰제목</p>
+                    <span>
+                      작은제목
+                    </span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                    <p>큰제목</p>
+                    <span>
+                      작은제목
+                    </span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                    <p>큰제목</p>
+                    <span>
+                      작은제목
+                    </span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                    <p>큰제목</p>
+                    <span>
+                      작은제목
+                    </span>
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                    <p>큰제목</p>
+                    <span>
+                      작은제목
+                    </span>
+                </a>
+              </li>       
+            </ul>
+          </div>
+        <div id="Footer">
+            <div class="bottom_menu">
+                <div>
+                    <i class="fa-solid fa-house selected"></i>
+                </div>
+                <div>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div>
+                    <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+                </div>
+                <div>
+                    <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+
+</html>

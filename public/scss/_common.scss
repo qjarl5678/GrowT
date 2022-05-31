@@ -1,0 +1,13 @@
+body{
+    display: flex;
+    
+    #root{
+      align-items: center;
+      display: flex;
+      overflow: hidden;
+      // max-width:940px;
+      // min-width:360px;
+      max-width:31rem;
+      margin: 0 auto;
+    }
+  }
