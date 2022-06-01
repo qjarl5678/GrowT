@@ -85,7 +85,7 @@ export async function addUser(req, res) {
   user.userPw = hased;
   user.refreshToken = "";
   if (await userModel.createUser(user)) {
-    res.status(201).json({ message: "post userId" });
+    res.status(200).json({ code: "100" });
   } else {
     res.status(500).json({ message: "srv error" });
   }

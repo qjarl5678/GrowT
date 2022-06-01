@@ -4,20 +4,138 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="/css/register.css" rel="stylesheet" type="text/css">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>회원가입</title>
+    <link>
 </head>
 <body>
-    <form action="/users/register" method="post">
-        <input type="text" name="userId">
-        <input type="password" name="userPw">
-        <input type="text" name="userName">
-        <input type="text" name="userMail">
-        <input type="date" name="userBirth">
-        <input type="radio" name="userGender" value="남자">
-        <input type="radio" name="userGender" value="여자">
-        <input type="text" name="userAddr1">
-        <input type="text" name="userAddr2">
-        <input type="submit" value="submit">
-    </form>
+    
+    <div class="register">
+        <div id="header">
+            <h1 class="big_title">
+              <img src= '/img/growT_logo.png'></img>
+            </h1>
+        </div>
+        <form action="/users/register" method="post">
+            <div class="flex">
+                <ul class="container">
+                    <li class="item center">
+                        이름
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userName" id="userName" placeholder="이름을 입력하세요" autofocus required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        아이디
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요." required>
+                    </li>
+                    <li class="item">
+                        <button class="idcheck">중복확인</button>
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        비밀번호
+                    </li>
+                    <li class="item">
+                        <input type="password" name="userPw" id="userPw" placeholder="비밀번호를 입력하세요." required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                    
+                    </li>
+                    <li class="item">
+                        <input type="password" name="userPWcheck" id="userPWcheck" placeholder="비밀번호를 다시 입력하세요." required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        생년월일
+                    </li>
+                    <li class="item">
+                        <input type="date" name="userBirth" id="userBirth" required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        성별
+                    </li>
+                    <li class="item">
+                        <select name="userGender" id="userGender">
+                            <option value="선택" selected>선택</option>
+                            <option value="남성">남성</option>
+                            <option value="여성">여성</option>
+                        </select>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        이메일
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userMail" id="userMail" placeholder="이메일" required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        주소
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userAddr1" id="userAddr1" placeholder="주소찾기 버튼을 클릭하세요" required readonly>
+                    </li>
+                    <li class="item">
+                        <button class="idcheck" onclick="sample6_execDaumPostcode()" >주소찾기</button>
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                    
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userAddr2" id="userAddr2" placeholder="상세주소를 입력하세요." required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        
+                    </li>
+                    <li class="item">
+                        <button type="button" id="registerBtn" class="submit">가입하기</button>
+                    </li>
+                    <li class="item">
+                    
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
 </body>
+<script src="/js/register.js"></script>
 </html>

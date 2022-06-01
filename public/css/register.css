@@ -1,0 +1,95 @@
+#header {
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+  }
+  ul,
+  li {
+      padding-left: 0;
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }  
+  ul{
+      display: flex;
+  }
+  li.item{
+      justify-content: center;
+  }
+  
+  .register{
+              max-width: 100%;
+              margin: auto 0;
+              background: white;
+              color: hsl(234, 26%, 23%);
+              font-size: 0.8rem;
+              box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+              max-height: 100%;
+          }
+          .register input{
+              width: 90%;
+              outline: none;
+              padding: 10px;
+              border: 1px solid #707070;
+              transition: 0.3s;
+          }
+          .register input:valid, .register input:focus{
+              border: 1px solid #2b2e4a;
+          }
+          .register .center{
+              display: flex;
+              align-items: center;
+          }
+          .register .flex{
+              max-width: 100%;
+              display: flex;
+              flex-direction: column;
+          }
+          .register .flex .container{
+              display: grid;
+              grid-template-columns: 1fr 3fr 1fr;
+              margin-bottom: 10px;
+          }
+          .register .flex .container .item:first-child{
+             margin-right: 10px;
+          }
+          .register .flex .container .item .idcheck{
+              height: 100%;
+              background: #2b2e4a;
+              border: 1px solid #2b2e4a;
+              color: white;
+              font-size: 12px;
+              transition: 0.3s;
+          }
+          .register .flex .container .item .idcheck:hover{
+              background: white;
+              color: #2b2e4a;
+          }
+          .register .flex .container .item select{
+              height: 40px;
+              padding: 10px;
+              border: 1px solid #2b2e4a;
+          }
+          .register .submit{
+              width: 100%;
+              height: 40px;
+              color: white;
+              border: none;
+              border: 1px solid #2b2e4a;
+              background: #2b2e4a;
+              transition: 0.3s;
+              margin-bottom: 10%;
+          }
+          .register .flex .container:last-child{
+              margin: 0;
+          }
+          .register .submit:hover{
+              width: 100%;
+              height: 40px;
+              border: none;
+              border: 1px solid #2b2e4a;
+              color: #2b2e4a;
+              background: white;
+          }
