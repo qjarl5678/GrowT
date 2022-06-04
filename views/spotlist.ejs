@@ -35,7 +35,7 @@
                 <a href="/spots/info/<%=data.contentsid%>">
                     <div class="img"><img src='<%= data.thumbnailpath%>'></div>
                     <div class="spotLike">
-                        <i class="fa-solid fa-heart"></i> 233
+                        <i class="fa-solid fa-heart"></i><%=data.likeNum%>
                     </div>
                     <div class="spotTitle">
                         <%= data.title%>
@@ -58,10 +58,10 @@
     <div id="Footer">
         <div class="bottom_menu">
             <div>
-                <i class="fa-solid fa-house selected"></i>
+                <a href="/"><i class="fa-solid fa-house selected"></i></a>
             </div>
             <div>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
             <div>
                 <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
@@ -70,14 +70,13 @@
                 <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
             </div>
             <div>
-                <i class="fa-solid fa-gear"></i>
+                <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
             </div>
         </div>
     </div>
     <script>
         const method = '<%=method%>';
         const value = '<%=value%>';
-
     </script>
     <script src="/js/spotlist.js"></script>
 </body>

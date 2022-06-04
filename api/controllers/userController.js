@@ -95,3 +95,16 @@ export async function addUser(req, res) {
 export async function getUserList(req, res) {
   res.send(await userModel.getUserList());
 }
+
+
+// 사용자 페이지 가져오기
+export async function getMyPage(req, res) {
+  const userId = req.userId;
+  res.render("mypage.ejs", {userId});
+}
+
+
+export async function userLogout(req, res){
+  res.clearCookie('accessToken');
+  res.redirect('/');
+}

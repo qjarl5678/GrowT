@@ -1,6 +1,6 @@
 import express from "express";
 import * as userController from "../controllers/userController.js";
-import { isAuth } from "../../services/jwt.js";
+import { isAuth, isAuthCheck} from "../../services/jwt.js";
 
 const router = express.Router();
 
@@ -18,5 +18,11 @@ router.get("/kakao/login", userController.getKakaoUserToken);
 // 회원가입
 router.get("/register", userController.getUserAdd);
 router.post("/register", userController.addUser);
+
+// 마이페이지
+router.get("/mypage", isAuthCheck, userController.getMyPage);
+
+// 로그아웃
+router.get("/logout", userController.userLogout);
 
 export default router;

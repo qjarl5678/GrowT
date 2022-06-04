@@ -17,6 +17,7 @@ const spotSchema = new Schema({
   photoid: { type: Number },
   imgpath: { type: String },
   thumbnailpath: { type: String },
+  likeNum : {type : Number},
 });
 
 const Tour = mongoose.model("Tour", spotSchema, "Tour");
@@ -54,7 +55,6 @@ export async function getOneSpot(contentsId) {
 
 // 태그를 눌렀을 때 해당 태그에 속한 관광지 리스트만 가져오기
 export async function getTagSpots(tagId) {
-  console.log(tagId);
   return await Tour.find({ tag: { $in: tagId } }).limit(10);
 }
 
@@ -67,3 +67,26 @@ export async function getCategoryList(contentValue) {
 export async function getSearchNameSpots(title) {
   return await Tour.find({ title: { $regex: title } });
 }
+
+
+// 좋아요 1 늘리기
+export async function plusLikeNum(contentsid) {
+  return await Tour.updateOne({ contentsid:contentsid },{"$inc":{likeNum:1}});
+}
+
+// 좋아요 1 줄이기
+export async function minusLikeNum(contentsid) {
+  return await Tour.updateOne({ contentsid:contentsid },{"$inc":{likeNum:-1}});
+}
+
+// 좋아요 개수 반환
+export async function getLikeNum(contentsid) {
+  return await Tour.findOne({ contentsid });
+}
+
+// 좋아요 상위 5개 리스트 반환
+export async function getLikeRank() {
+  return await Tour.find({}).sort({"likeNum":-1}).limit(5);
+}
+
+

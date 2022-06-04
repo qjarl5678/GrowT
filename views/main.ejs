@@ -13,7 +13,6 @@
     <title>GrowT</title>
 </head>
 <script>
-
     var slideIndex = 0; //slide index
 
     // HTML 로드가 끝난 후 동작
@@ -40,9 +39,9 @@
     }
 
     function showSlides(n) {
-      var slides = document.getElementsByclass("mySlides");
-      var dots = document.getElementsByclass("dot");
-      var size = slides.length;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      let size = slides.length;
       if ((n+1) > size) {
         slideIndex = 0; n = 0;
       }else if (n < 0) {
@@ -53,16 +52,16 @@
       for (i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
       }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].class = dots[i].class.replace(" active", "");
-      }
+      // for (i = 0; i < dots.length; i++) {
+      //     dots[i].class = dots[i].class.replace(" active", "");
+          
+      // }
 
       slides[n].style.display = "block";
       dots[n].class += " active";
     }
   </script>
 <body>
-    
     <div id="root">
         <div id="header">
             <h1 class="big_title">
@@ -70,32 +69,43 @@
             </h1>
         </div>
         <div id="sidebar">
-            <h2>Category</h2>
             <div class="slide-wrap">
               <ul>
                 <li>
-                  <a href="/">
-                    <i class="fa-solid fa-bicycle"></i>
+                  <a href="/spots">
+                    <img src="/img/all.png">
                   </a>
-                  <p class="list-tit">자전거</p>
+                  <p class="list-tit">전체</p>
                 </li>
                 <li>
-                  <a href="/">
-                    <i class="fa-solid fa-bicycle"></i>
+                  <a href="/spots/category/c1">
+                    <img src="/img/3.png">
                   </a>
-                  <p class="list-tit">자전거</p>
+                  <p class="list-tit">관광지</p>
                 </li>
                 <li>
-                  <a href="/">
-                    <i class="fa-solid fa-bicycle"></i>
+                  <a href="/spots/category/c3">
+                    <img src="/img/1.png">
                   </a>
-                  <p class="list-tit">자전거</p>
+                  <p class="list-tit">숙소</p>
                 </li>
                 <li>
-                  <a href="/">
-                    <i class="fa-solid fa-bicycle"></i>
+                  <a href="/spots/category/c4">
+                    <img src="/img/2.png">
                   </a>
-                  <p class="list-tit">자전거</p>
+                  <p class="list-tit">맛집</p>
+                </li>
+                <li>
+                  <a href="/spots/category/c4">
+                    <img src="/img/human.png">
+                  </a>
+                  <p class="list-tit">커뮤니티</p>
+                </li>
+                <li>
+                  <a href="/spots/category/c4">
+                    <img src="/img/medal.png">
+                  </a>
+                  <p class="list-tit">뱃지</p>
                 </li>
               </ul>
             </div>
@@ -103,26 +113,22 @@
 
           <div id="content">
             <div class="slideshow-container">
-              <div class="mySlides fade img1">
+              <div class="top">좋아요 TOP 5</div>
+              <% for(let i=0; i < data.length; i++) {%>
+              <div class="mySlides fade">  
                 <div class="img">
-                  <img src="/img/ex_01.jpg" />
+                  <img src="<%=data[i].imgpath%>" />
+
+                  <div class="spotLikeImg"><i class="fa-solid fa-heart" ></i><span id="like"><%=data[i].likeNum%></span></div>
                 </div>
                 <div class="contents_txt">
-                  <span class="tit">1.제목입니다.</span>
-                  <span class="sub-tit">서브타이틀입니다.</span>
-                  <p>가나다라마바사</p>
+                  <div class="rank"><span class="rank_title"><%= i+1 %>위</span><span class="label"><%=data[i].contentslabel%></span></div>
+                  <span class="tit"><a href="/spots/info/<%=data[i].contentsid%>"><%=data[i].title%></a></span>
+                  <span class="sub-tit"><%=data[i].introduction%></span>
+                  <p><%=data[i].address%></p>
                 </div>
               </div>
-              <div class="mySlides fade img2">
-                <div class="img">
-                  <img src="/img/ex_01.jpg" />
-                </div>
-                <div class="contents_txt">
-                  <span class="tit">1.제목입니다.</span>
-                  <span class="sub-tit">서브타이틀입니다.</span>
-                  <p>가나다라마바사가나다라마바사가나사가나다라</p>
-                </div>
-              </div>
+              <% }%>
               <div class="dot_bar">
                 <span class="dot"></span>
                 <span class="dot"></span>
@@ -178,26 +184,25 @@
                 </a>
               </li>       
             </ul>
+            <div id="Footer">
+              <div class="bottom_menu">
+                  <div>
+                      <a href="/"><i class="fa-solid fa-house selected"></i></a>
+                  </div>
+                  <div>
+                      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                  </div>
+                  <div>
+                      <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+                  </div>
+                  <div>
+                      <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+                  </div>
+                  <div>
+                    <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
+                  </div>
+              </div>
           </div>
-        <div id="Footer">
-            <div class="bottom_menu">
-                <div>
-                    <i class="fa-solid fa-house selected"></i>
-                </div>
-                <div>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <div>
-                    <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
-                </div>
-                <div>
-                    <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
-                </div>
-                <div>
-                    <i class="fa-solid fa-gear"></i>
-                </div>
-            </div>
-        </div>
     </div>
     
     

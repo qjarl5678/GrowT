@@ -34,13 +34,15 @@ async function showList(num) {
     html = `<div class="data">
                  <a href='/spots/info/${data.contentsid}'>
                  <div><img src=${data.thumbnailpath}></div>
-                 <div class="spotLike"><i class="fa-solid fa-heart"></i> 233</div>
+                 <div class="spotLike"><i class="fa-solid fa-heart"></i>${data.likeNum}</div>
                  <div class="spotTitle">${data.title}</div>
                  <div class="spotIntroduction">${data.introduction}</div>
                  <div class="spotAddress">${data.address}</div>
                  </a>
                  <div>${temp}</div><hr>
              </div>`;
+
+             console.log(data.likeNum);
 
     dataBox.insertAdjacentHTML("beforeend", html);
   });

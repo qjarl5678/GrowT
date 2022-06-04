@@ -1,95 +1,199 @@
+body {
+  margin: 0px;
+}
+
+* {
+  font-family: 'Noto Serif KR', serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
 #header {
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
-  }
-  ul,
-  li {
-      padding-left: 0;
-    list-style: none;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }  
-  ul{
-      display: flex;
-  }
-  li.item{
-      justify-content: center;
-  }
-  
-  .register{
-              max-width: 100%;
-              margin: auto 0;
-              background: white;
-              color: hsl(234, 26%, 23%);
-              font-size: 0.8rem;
-              box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-              max-height: 100%;
-          }
-          .register input{
-              width: 90%;
-              outline: none;
-              padding: 10px;
-              border: 1px solid #707070;
-              transition: 0.3s;
-          }
-          .register input:valid, .register input:focus{
-              border: 1px solid #2b2e4a;
-          }
-          .register .center{
-              display: flex;
-              align-items: center;
-          }
-          .register .flex{
-              max-width: 100%;
-              display: flex;
-              flex-direction: column;
-          }
-          .register .flex .container{
-              display: grid;
-              grid-template-columns: 1fr 3fr 1fr;
-              margin-bottom: 10px;
-          }
-          .register .flex .container .item:first-child{
-             margin-right: 10px;
-          }
-          .register .flex .container .item .idcheck{
-              height: 100%;
-              background: #2b2e4a;
-              border: 1px solid #2b2e4a;
-              color: white;
-              font-size: 12px;
-              transition: 0.3s;
-          }
-          .register .flex .container .item .idcheck:hover{
-              background: white;
-              color: #2b2e4a;
-          }
-          .register .flex .container .item select{
-              height: 40px;
-              padding: 10px;
-              border: 1px solid #2b2e4a;
-          }
-          .register .submit{
-              width: 100%;
-              height: 40px;
-              color: white;
-              border: none;
-              border: 1px solid #2b2e4a;
-              background: #2b2e4a;
-              transition: 0.3s;
-              margin-bottom: 10%;
-          }
-          .register .flex .container:last-child{
-              margin: 0;
-          }
-          .register .submit:hover{
-              width: 100%;
-              height: 40px;
-              border: none;
-              border: 1px solid #2b2e4a;
-              color: #2b2e4a;
-              background: white;
-          }
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+ul,
+li {
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+li.item {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.register {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 400px;
+  background: white;
+  color: #7ECB20;
+  font-size: 0.8rem;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.register input {
+  width: 90%;
+  outline: none;
+  padding: 10px;
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #efefef;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.register input:valid,
+.register input:focus {
+  border: 1px solid #7ECB20;
+}
+
+.register .center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.register .flex {
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.register .flex .container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr 1fr;
+      grid-template-columns: 1fr 3fr 1fr;
+  margin-bottom: 10px;
+}
+
+.register .flex .container .item:first-child {
+  margin-right: 10px;
+}
+
+.register .flex .container .item .idcheck {
+  height: 100%;
+  background: #7ECB20;
+  border: 1px solid #7ECB20;
+  color: white;
+  font-size: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.register .flex .container .item .idcheck:hover {
+  background: white;
+  color: #2b2e4a;
+}
+
+.register .flex .container .item select {
+  height: 40px;
+  padding: 10px;
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #efefef;
+}
+
+.register .submit {
+  width: 100%;
+  height: 40px;
+  color: white;
+  border: none;
+  border: 1px solid #7ECB20;
+  background: #7ECB20;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 10%;
+}
+
+.register .flex .container:last-child {
+  margin: 0;
+}
+
+.register .submit:hover {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border: 1px solid #2b2e4a;
+  color: #2b2e4a;
+  background: white;
+}
+
+#Footer {
+  padding: 10px;
+  margin-top: 5%;
+}
+
+#Footer .bottom_menu {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  z-index: 100;
+  border-top: 0.5px solid #e7e7e7;
+  background-color: #fff;
+}
+
+#Footer .bottom_menu > div {
+  float: left;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  padding-top: 13px;
+}
+
+#Footer .bottom_menu > div > i {
+  opacity: 0.3;
+}
+
+#Footer .bottom_menu > div > .selected {
+  opacity: 1;
+}
+/*# sourceMappingURL=register.css.map */

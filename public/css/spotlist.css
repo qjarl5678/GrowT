@@ -130,6 +130,7 @@ a {
 }
 
 .main .data .spotLike i {
+  margin-right: 5px;
   color: pink;
 }
 

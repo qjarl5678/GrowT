@@ -130,20 +130,36 @@ export async function changeLike(req, res) {
     contentsid: contentsId,
   };
 
+
+
   // 만약 userId가 없으면 로그인되지 않아 누를 수 없다는 안내하기
   if (!userId) {
-    res.status(401).json({'result':3});
+    res.status(401).json({result:3});
   } else {
     // 우선 사용자 ID와 관광지 ID로 조회해서 사용자가 좋아요를 누른적이 있었는지 체크해보기
     const result = await spotLikeModel.checkSpotLike(info);
     // 값이 없으면 데이터 추가
     if (!result) {
       await spotLikeModel.changeSpotLike(info);
-      res.status(200).json({'result':1});
+      await spotModel.plusLikeNum(info.contentsid);
+      const spot = await spotModel.getLikeNum(info.contentsid);
+      console.log(spot);
+      console.log(spot.likeNum);
+      const data = {
+        result:1,
+        likeNum:spot.likeNum,
+      }
+      res.status(200).json(data);
       // 있으면 데이터 삭제
     } else {
       await spotLikeModel.deleteSpotLike(info);
-      res.status(200).json({'result':2});
+      await spotModel.minusLikeNum(info.contentsid);
+      const spot = await spotModel.getLikeNum(info.contentsid);
+      const data = {
+        result:1,
+        likeNum:spot.likeNum,
+      }
+      res.status(200).json(data);
     }
   }
 }
@@ -156,3 +172,4 @@ export async function getMapData(req, res) {
   const spotList = await spotModel.getSpotList100();
   res.status(200).json(spotList);
 }
+

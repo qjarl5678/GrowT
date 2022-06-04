@@ -93,7 +93,7 @@ a {
             font-size:14px;
             font-weight: bold;
             i {
-
+                margin-right:5px;
                 color:pink;
             }
         }
@@ -120,6 +120,7 @@ a {
         }
     }
 }
+
 
 #Footer {        
     padding: 10px;
@@ -151,4 +152,5 @@ a {
     .bottom_menu>div>.selected {
         opacity: 1;
     }
+
 }

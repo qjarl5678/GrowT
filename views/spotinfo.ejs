@@ -19,11 +19,11 @@
 <body>
     <div class="main">
         <div id="back">
-            <a href="javascript:history.go(-1);"><i class="fa-solid fa-arrow-left"></i></a>
+            <a onclick="goBackPage()"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="data">
             <div class="spotImg"><img src="<%=spotInfo.imgpath%>">
-                <div class="spotLikeImg"><i class="fa-solid fa-heart" ></i> 233</div>
+                <div class="spotLikeImg"><i class="fa-solid fa-heart" ></i><span id="like"><%=spotInfo.likeNum%></span></div>
             </div>
             <div class="spotTitle">
                 <div><%=spotInfo.title%></div>
@@ -64,10 +64,10 @@
     <div id="Footer">
         <div class="bottom_menu">
             <div>
-                <i class="fa-solid fa-house selected"></i>
+                <a href="/"><i class="fa-solid fa-house selected"></i></a>
             </div>
             <div>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
             <div>
                 <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
@@ -76,7 +76,7 @@
                 <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
             </div>
             <div>
-                <i class="fa-solid fa-gear"></i>
+                <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
             </div>
         </div>
     </div>
@@ -109,19 +109,28 @@
         async function changeLike(){
             let result = await fetch("/spots/like/<%=spotInfo.contentsid%>");
             let heart = document.getElementById('heart');
+            let like = document.getElementById("like");
+            console.log(result);
             result = await result.json();
+            console.log(result);
             // 좋아요가 안눌러져있었을 때
             if(result.result === 1){
                 heart.style.color = 'pink';
+                like.innerHTML = result.likeNum;
                 // 좋아요가 눌러져있었을 때
             }else if(result.result ===2){
                 heart.style.color = 'silver';
+                like.innerHTML = likeNum;
                 // 로그인이 안되어있을 때 
             }else{
                 alert("로그인이 되어있지않아 처리할 수 없습니다.");
             }
+      
         }
         
+        function goBackPage(){
+            history.go(-1);
+        }
     </script>
 </body>
 

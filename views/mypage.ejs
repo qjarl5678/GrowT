@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+
+    <link href="/css/mypage.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="main">
+        <div class="header">
+            <% if(!userId){%>
+                <div class="login"><a href="/users/login">로그인 하시겠습니까?</a></div>
+
+                <% }else { %>
+                    <div>
+                        <%=userId%>님
+                    </div>
+                    <div class="logout"><a href="/users/logout">로그아웃</a></div>
+                    <% }%>
+        </div>
+        <div class="content">
+            <div>
+                <div><i class="fa-solid fa-heart" ></i></div>
+                <div>찜</div>
+            </div>
+            <div>
+                <div><img src="/img/editcom.png"></div>
+                <div>내가쓴글</div>
+            </div>
+            <div>
+                <div><img src="/img/editcom.png"></div>
+                <div>내정보수정</div>
+            </div>
+        </div>
+    </div>
+    <div id="Footer">
+        <div class="bottom_menu">
+            <div>
+                <a href="/"><i class="fa-solid fa-house selected"></i></a>
+            </div>
+            <div>
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </div>
+            <div>
+                <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+            </div>
+            <div>
+                <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+            </div>
+            <div>
+                <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
