@@ -31,7 +31,14 @@
                         <div><img src="<%=data[i].imgpath%>"></div>
                         <div class="likeBox"><i class="fa-solid fa-heart" ></i><span class="like"><%=data[i].likeNum%></span></div>
                     </div>
-                    <div class="title"><span><%=data[i].title%></span><i class="fa-solid fa-heart color" id="heart" onclick="changeLike('<%=data[i]._id%>', '<%=i%>')"></i></div>
+                    <div class="title"><span><%=data[i].title%></span>
+                        <% if(promises[i]===1){%>
+                            <i class="fa-solid fa-heart color" id="heart" onclick="changeLike('<%=data[i]._id%>', '<%=i%>')" style="color:pink"></i></div>
+                        <%} else { %>
+                            <i class="fa-solid fa-heart color" id="heart" onclick="changeLike('<%=data[i]._id%>', '<%=i%>')" style="color:silver"></i></div>
+
+                            <% }%>
+                       
                     <div class="content"><%=data[i].introduction%></div>
                     <div class="address"><%=data[i].address%></div>
                     <div class="tag">

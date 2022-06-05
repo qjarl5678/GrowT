@@ -28,6 +28,7 @@ export async function addAssay(assay) {
 export async function getUserAssay(userId){
     return await Assay.find({userId}).sort({Time:-1});
 }
+
 export async function getAllAssay(){
     return await Assay.find({}).sort({Time:-1});
 }

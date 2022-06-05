@@ -28,3 +28,7 @@ export async function deleteSpotLike(info) {
 export async function checkSpotLike(info) {
   return await assayLike.findOne(info);
 }
+
+export async function checkIdLike(info){
+  return await assayLike.findOne({userid:info.userId, contentsid:info.contentsid});
+}
