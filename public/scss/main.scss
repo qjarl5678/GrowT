@@ -84,6 +84,7 @@ a {
 
         .spotLikeImg {
           position:absolute;
+          width:30px;
           bottom:20px;
           right:20px;
           font-size:14px;
@@ -112,18 +113,18 @@ a {
           padding-left:10px;
           display:flex;
           justify-content: space-between;
-          font-size:13px;
+          font-size:11px;
           text-align: center;
           font-weight: bold;
           color:black;
           margin-top:5px;
-          margin-bottom:15px;
+          margin-bottom:8px;
 
           .rank_title {
-            font-size:18px;
+            font-size:14px;
           }
           .label {
-            font-size:13px;
+            font-size:12px;
             color:silver;
           }
         }
@@ -135,17 +136,19 @@ a {
           font-weight: bold;
         }
         .tit{
-          margin-bottom: 10px;
+          margin-bottom: 3px;
           padding-left:10px;
+          font-size:13px;
+          font-weight: bold;
         }
         .sub-tit {
-          margin-bottom: 5px;
-          font-size: 15px;
+          margin-bottom: 1px;
+          font-size: 11px;
           font-weight: 300;
           padding-left: 10px;
         }
         p {
-          font-size: 13px;
+          font-size: 11px;
           font-weight: normal;
           padding-left:10px;
           color:silver;
@@ -158,49 +161,58 @@ a {
 
   #board {
     margin: 0 10px;
-    border: 1px solid rgb(201, 201, 201);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 50px;
-  
-    .board-tit {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-  
-      h2 {
-        font-size: 1.4rem;
-      }
-  
-      a{
-        color:rgb(255, 139, 139);
-        font-size:.8rem;
-        display: flex;
-        text-decoration: none;
-      }
+    padding: 20px;
+    .board_header {
+      padding-left:10px;
+      font-size: 16px;
+    font-weight: bold;
+    margin-bottom:10px;
     }
-  
-    .board-list {
-      a {
-        color: rgb(29, 29, 29);
-        font-size: 0.8rem;
-        display: flex;
-        text-decoration: none;
-        justify-items: center;
+
+    .swiper {
+      border-radius: 15px!important;
+      
+    }
+    .swiper-slide{
+      width:100%;
+      height:300px;
+      position:relative;
+      
+      .imgOver {
+        
+        position:absolute;
+        top:0px;
+        width:100%;
+        height:40px;
+        background-color: black;
+        display:flex;
+        justify-content: space-between;
         align-items: center;
-        padding:5px 0;
-        border-top: solid 1px #ccc;
-        p {
-          text-decoration: none;
-          font-size:1rem;
+        font-size:11px;
+        opacity: 0.7;
+        > div{
+          color:white;
+          opacity: 1;
           font-weight: bold;
-          padding: 0 10px;
+          padding:0px 20px;
         }
-        span{
-          justify-items: center;
-          padding: 0 10px;
+
+        
+      }
+      .spotLikeImg {
+        position:absolute;
+        width:30px;
+        bottom:20px;
+        right:20px;
+        font-size:14px;
+        color:white;
+
+        i {
+            color:pink;
+            margin-right:3px;
         }
       }
+
     }
   }
 

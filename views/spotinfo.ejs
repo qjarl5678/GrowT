@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
     <title>관광지 상세보기</title>
     <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
@@ -120,7 +119,7 @@
                 // 좋아요가 눌러져있었을 때
             }else if(result.result ===2){
                 heart.style.color = 'silver';
-                like.innerHTML = likeNum;
+                like.innerHTML = result.likeNum;
                 // 로그인이 안되어있을 때 
             }else{
                 alert("로그인이 되어있지않아 처리할 수 없습니다.");

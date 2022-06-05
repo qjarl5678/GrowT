@@ -156,7 +156,7 @@ export async function changeLike(req, res) {
       await spotModel.minusLikeNum(info.contentsid);
       const spot = await spotModel.getLikeNum(info.contentsid);
       const data = {
-        result:1,
+        result:2,
         likeNum:spot.likeNum,
       }
       res.status(200).json(data);

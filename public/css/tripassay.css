@@ -1,0 +1,278 @@
+body {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  position: relative;
+}
+
+* {
+  font-family: 'Noto Serif KR', serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+#main header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#main header > div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#main header > div input[type="search"] {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #efefef;
+  border-radius: 4px;
+  border-style: none;
+  height: 30px;
+}
+
+#main section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+#main section .feed {
+  margin: 20px auto;
+  width: 90%;
+  font-size: 12px;
+  border-style: solid;
+  border-color: silver;
+  border-radius: 10px;
+  border-width: 1px;
+  padding-bottom: 30px;
+  margin-bottom: 5px;
+}
+
+#main section .feed .username {
+  border-bottom-style: solid;
+  border-bottom-color: silver;
+  border-bottom-width: 1px;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+#main section .feed .img {
+  position: relative;
+}
+
+#main section .feed .img .likeBox {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: white;
+}
+
+#main section .feed .img img {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+}
+
+#main section .feed .img i {
+  color: pink;
+  margin-right: 5px;
+}
+
+#main section .feed .title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 0px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#main section .feed .title i {
+  color: silver;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+#main section .feed .content {
+  padding: 0px 20px;
+  margin-bottom: 10px;
+}
+
+#main section .feed .address {
+  padding: 0px 20px;
+  font-size: 11px;
+  color: silver;
+}
+
+#main section .feed .tag {
+  padding: 0px 20px;
+  font-size: 11px;
+  color: silver;
+  margin-top: 3px;
+}
+
+#main section .feed .tag a {
+  color: silver;
+}
+
+#main section .feed .date {
+  padding: 0px 20px;
+  font-size: 11px;
+  color: silver;
+  text-align: right;
+}
+
+#Footer {
+  padding: 10px;
+  margin-top: 5%;
+}
+
+#Footer .bottom_menu {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  z-index: 100;
+  border-top: 0.5px solid #e7e7e7;
+  background-color: #fff;
+}
+
+#Footer .bottom_menu > div {
+  float: left;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  padding-top: 13px;
+}
+
+#Footer .bottom_menu > div > i {
+  opacity: 0.3;
+}
+
+#Footer .bottom_menu > div > .selected {
+  opacity: 1;
+}
+
+.container {
+  height: 100%;
+}
+
+.container > .btn {
+  margin: 60px;
+  padding: 20px 40px;
+  font-size: 30px;
+  border-radius: 40px;
+}
+
+.modal {
+  background: #fff;
+  width: 100%;
+  max-width: 400px;
+  height: 70%;
+  margin: 0px auto;
+  -webkit-transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
+  transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
+  top: 100%;
+  position: fixed;
+  text-align: left;
+  border-top-style: solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-color: silver;
+  border-top-width: 1px;
+}
+
+.modal > div {
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.modal .modalHeader {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.modal input[type="text"], .modal textarea {
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: #efefef;
+  border-bottom-width: 1px;
+  margin-top: 8px;
+  width: 100%;
+  height: 18px;
+  padding: 5px 10px;
+}
+
+.modal .modalName, .modal .modalContent, .modal .modalHashTag, .modal .modalAddress, .modal .modalImg {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.modal textarea {
+  height: 25px;
+}
+
+.btn {
+  background: -webkit-gradient(linear, left top, right top, from(#dce35b), to(#45b649));
+  background: linear-gradient(to right, #dce35b, #45b649);
+  padding: 10px 25px;
+  display: inline-block;
+  border-radius: 25px;
+  margin: 20px 0;
+  color: #fff;
+  position: relative;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  border-style: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.container.modal-open .modal {
+  top: 30%;
+}
+/*# sourceMappingURL=tripassay.css.map */

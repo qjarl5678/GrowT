@@ -31,15 +31,35 @@ export async function getAccessToken(token) {
   } */
 }
 
-export async function getKakaoUserInfo(tokenInfo){
-    const requestUrl ="https://kapi.kakao.com/v2/user/me";
-    const headers = {
-        Authorization: `Bearer ${tokenInfo.access_token}`,
-    };
+export async function getKakaoUserInfo(tokenInfo) {
+  const requestUrl = "https://kapi.kakao.com/v2/user/me";
+  const headers = {
+    Authorization: `Bearer ${tokenInfo.access_token}`,
+  };
 
-    const kakaoUserInfo = await fetch(requestUrl, {
-        method:"GET",
-        headers,
-    });
-    return await kakaoUserInfo.json();
+  const kakaoUserInfo = await fetch(requestUrl, {
+    method: "GET",
+    headers,
+  });
+  return await kakaoUserInfo.json();
+}
+
+export async function xyAddress(address) {
+  const requestUrl = "https://dapi.kakao.com/v2/local/search/address.json?query="+address;
+  const headers = {
+    "Authorization": `KakaoAK ${key}`,
+  };
+
+  let kakaoAddr = await fetch(requestUrl, {
+    method: "GET",
+    headers,
+  });
+  kakaoAddr = await kakaoAddr.json();
+
+  const arr = {
+    x : kakaoAddr.documents[0].x,
+    y : kakaoAddr.documents[0].y,
+  }
+  
+  return arr;
 }

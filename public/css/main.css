@@ -17,7 +17,7 @@ a {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 #header {
@@ -89,6 +89,7 @@ code {
 
 #content .slideshow-container .img .spotLikeImg {
   position: absolute;
+  width: 30px;
   bottom: 20px;
   right: 20px;
   font-size: 14px;
@@ -123,20 +124,20 @@ code {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 13px;
+  font-size: 11px;
   text-align: center;
   font-weight: bold;
   color: black;
   margin-top: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 #content .slideshow-container .contents_txt .rank .rank_title {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 #content .slideshow-container .contents_txt .rank .label {
-  font-size: 13px;
+  font-size: 12px;
   color: silver;
 }
 
@@ -150,19 +151,21 @@ code {
 }
 
 #content .slideshow-container .contents_txt .tit {
-  margin-bottom: 10px;
+  margin-bottom: 3px;
   padding-left: 10px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 #content .slideshow-container .contents_txt .sub-tit {
-  margin-bottom: 5px;
-  font-size: 15px;
+  margin-bottom: 1px;
+  font-size: 11px;
   font-weight: 300;
   padding-left: 10px;
 }
 
 #content .slideshow-container .contents_txt p {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: normal;
   padding-left: 10px;
   color: silver;
@@ -171,60 +174,64 @@ code {
 
 #board {
   margin: 0 10px;
-  border: 1px solid #c9c9c9;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 50px;
+  padding: 20px;
 }
 
-#board .board-tit {
+#board .board_header {
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#board .swiper {
+  border-radius: 15px !important;
+}
+
+#board .swiper-slide {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+#board .swiper-slide .imgOver {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 40px;
+  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-#board .board-tit h2 {
-  font-size: 1.4rem;
-}
-
-#board .board-tit a {
-  color: #ff8b8b;
-  font-size: .8rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-decoration: none;
-}
-
-#board .board-list a {
-  color: #1d1d1d;
-  font-size: 0.8rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-decoration: none;
-  justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 5px 0;
-  border-top: solid 1px #ccc;
+  font-size: 11px;
+  opacity: 0.7;
 }
 
-#board .board-list a p {
-  text-decoration: none;
-  font-size: 1rem;
+#board .swiper-slide .imgOver > div {
+  color: white;
+  opacity: 1;
   font-weight: bold;
-  padding: 0 10px;
+  padding: 0px 20px;
 }
 
-#board .board-list a span {
-  justify-items: center;
-  padding: 0 10px;
+#board .swiper-slide .spotLikeImg {
+  position: absolute;
+  width: 30px;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+  color: white;
+}
+
+#board .swiper-slide .spotLikeImg i {
+  color: pink;
+  margin-right: 3px;
 }
 
 #sidebar {

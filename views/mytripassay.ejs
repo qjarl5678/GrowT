@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Document</title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+    <link href="/css/mytripassay.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="main">
+            <header>
+                <% if(userId){%>
+                    <div class="user">
+                        <%=userId%>님의 여행기록장
+                    </div>
+                    <% }%>
+                        <div class="button">
+                            <button class="btn js-click-modal">기록하기</button>
+                        </div>
+            </header>
+            <section>
+                <% for(let i=0; i < data.length; i++){%>
+                    <div><img src="<%=data[i].imgpath%>"></div>
+                <%}%>
+            </section>
+        </div>
+        <div id="Footer">
+            <div class="bottom_menu">
+                <div>
+                    <a href="/"><i class="fa-solid fa-house selected"></i></a>
+                </div>
+                <div>
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <div>
+                    <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+                </div>
+                <div>
+                    <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+                </div>
+                <div>
+                    <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
+                </div>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div>
+                <div class="modalHeader">여행 일지 기록</div>
+                <div class="modalName">
+                    <div>스팟 이름</div>
+                    <div><input id="title" type="text" name="title"></div>
+                </div>
+                <div class="modalContent">
+                    <div>스팟 정보</div>
+                    <div><textarea id="introduction" type="text" name="introduction"></textarea></div>
+                </div>
+                <div class="modalHashTag">
+                    <div>관련 해쉬 태그</div>
+                    <div><input id="tag" type="text" name="tag"></div>
+                </div>
+                <div class="modalAddress">
+                    <div>주소</div>
+                    <div><input id="address" type="text" name="address" onclick="sample6_execDaumPostcode()"></div>
+                </div>
+                <div class="modalImg">
+                    <div>사진</div>
+                    <div><input id="file" class="file" type="file" name="file"></div>
+                </div>
+                <div>
+                    <button onclick="submitAssay()">제출</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            const userId = '<%=userId%>';
+        </script>
+        <script src="/js/mytripassay.js"></script>
+    </div>
+</body>
+
+</html>

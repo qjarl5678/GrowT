@@ -6,12 +6,15 @@ import helmet from "helmet";
 import users from "../api/routes/users.js";
 import spots from "../api/routes/spots.js";
 import main from "../api/routes/main.js";
+import assay from "../api/routes/assay.js";
 import { config } from "../config/config.js";
 import { sequelize } from "../db/mysql.js";
 import { connectDB } from "../db/mongoose.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
+import fileUpload from "express-fileupload";
+
 
 // es6 이상 module에서는 __dirname 미제공으로 아래와같이 작성해야됨
 const __filename = fileURLToPath(import.meta.url);
@@ -36,6 +39,7 @@ export default async (app) => {
       crossOriginEmbedderPolicy: false,
     })
   );
+  app.use(fileUpload());
   // app.use(helmet.contentSecurityPolicy(config.csp));
 
   // favicon 설정
@@ -52,6 +56,8 @@ export default async (app) => {
   app.use("/users", users);
   // 관광지 관련된
   app.use("/spots", spots);
+  // 여행기록 관련된
+  app.use("/assay", assay);
 
   // 에러처리
   app.use((req, res, next) => {

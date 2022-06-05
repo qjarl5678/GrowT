@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>Document</title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=v1qeu7xew1"></script>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+    <link href="/css/tripassay.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="main">
+            <header>
+                <div><input type="search" name="search"/></div>
+            </header>
+            <section>
+                <% for(let i=0; i< data.length; i++){ %>
+                <div class="feed">
+                    <div class="username"><%=data[i].userId%></div>
+                    <div class="img">
+                        <div><img src="<%=data[i].imgpath%>"></div>
+                        <div class="likeBox"><i class="fa-solid fa-heart" ></i><span class="like"><%=data[i].likeNum%></span></div>
+                    </div>
+                    <div class="title"><span><%=data[i].title%></span><i class="fa-solid fa-heart color" id="heart" onclick="changeLike('<%=data[i]._id%>', '<%=i%>')"></i></div>
+                    <div class="content"><%=data[i].introduction%></div>
+                    <div class="address"><%=data[i].address%></div>
+                    <div class="tag">
+                    <% data[i].tag.forEach(tag=> { %>
+                        <span><a href="/spots/tag/<%=tag%>"><%= tag %></a></span>
+                        <% }) %>
+                    </div>
+                    <div class="date"><%=data[i].formatTime%></div>
+                </div>
+                <% } %>
+            </section>
+        </div>
+        <div id="Footer">
+            <div class="bottom_menu">
+                <div>
+                    <a href="/"><i class="fa-solid fa-house selected"></i></a>
+                </div>
+                <div>
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </div>
+                <div>
+                    <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+                </div>
+                <div>
+                    <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+                </div>
+                <div>
+                    <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+         async function changeLike(title, i){
+            let result = await fetch(`/assay/like/${title}`);
+            let heart = document.getElementsByClassName('fa-solid fa-heart color');
+            let like = document.getElementsByClassName("like");
+            console.log(i);
+            console.log(like);
+            result = await result.json();
+            // 좋아요가 안눌러져있었을 때
+            if(result.result === 1){
+                heart[i].style.color = 'pink';
+                like[i].innerHTML = result.likeNum;
+                // 좋아요가 눌러져있었을 때
+            }else if(result.result ===2){
+                heart[i].style.color = 'silver';
+                like[i].innerHTML = result.likeNum;
+                // 로그인이 안되어있을 때 
+            }else{
+                alert("로그인이 되어있지않아 처리할 수 없습니다.");
+            }
+      
+        }
+    </script>
+</body>
+
+</html>
