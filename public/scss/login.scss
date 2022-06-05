@@ -61,7 +61,7 @@ a {
 }
   
 #login_form{
-    width: 100%;
+    width: 80%;
     
     .input-box{
         position:relative;
@@ -72,7 +72,7 @@ a {
         border:none;
         border-bottom: solid 1px #ccc;
         padding:20px 0px 5px 0px;
-        font-size:14pt;
+        font-size:14px;
         width:100%;
     }
     input::placeholder{
@@ -81,7 +81,7 @@ a {
 
     input:placeholder-shown + label{
         color:#aaa;
-        font-size:14pt;
+        font-size:14px;
         top:15px;
 
     }
@@ -109,7 +109,7 @@ a {
         border-radius: 5px;
         width:100%;
         height:50px;
-        font-size: 1rem;
+        font-size: 13px;
         margin-top:20px;
     }
     .fjNav{
@@ -124,6 +124,7 @@ a {
     }
     .fjNav span{
         padding: 0 10px;
+        font-size: 13px;
     }
     
 

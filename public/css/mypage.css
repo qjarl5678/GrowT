@@ -15,16 +15,22 @@ a {
 }
 
 #main .header {
-  margin-top: 50px;
+  margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: right;
       -ms-flex-pack: right;
           justify-content: right;
+  font-size: 14px;
+  padding-right: 20px;
 }
 
 #main .header .login {
+  color: silver;
+}
+
+#main .header .login a {
   color: silver;
 }
 
@@ -47,7 +53,7 @@ a {
 }
 
 #main .content > div {
-  width: 33%;
+  width: 25%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,13 +70,17 @@ a {
 }
 
 #main .content > div i {
-  font-size: 25px;
+  font-size: 20px;
   color: pink;
 }
 
 #main .content > div img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
+}
+
+#main .content > div .content_header {
+  font-size: 13px;
 }
 
 #Footer {
