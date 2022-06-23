@@ -50,7 +50,7 @@ export async function postAssay(req, res) {
   const time = new Date().getTime();
   let savePath =
     __dirname +
-    "../../../public/img/assayUserImg/" +
+    "/../../public/img/assayUserImg/" +
     time +
     "_" +
     req.files.file.name;
