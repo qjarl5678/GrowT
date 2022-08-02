@@ -22,32 +22,19 @@ a {
 
 #main .button {
   margin-top: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: right;
+  align-items: center;
   padding-right: 20px;
 }
 
 #main section {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: left;
+  align-items: center;
   width: 375px;
   margin: 0px auto;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 #main section > div {
@@ -109,7 +96,6 @@ a {
   max-width: 400px;
   height: 70%;
   margin: 0px auto;
-  -webkit-transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
   transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
   top: 100%;
   position: fixed;
@@ -156,7 +142,6 @@ a {
 }
 
 .btn {
-  background: -webkit-gradient(linear, left top, right top, from(#dce35b), to(#45b649));
   background: linear-gradient(to right, #dce35b, #45b649);
   padding: 10px 25px;
   display: inline-block;
@@ -164,15 +149,13 @@ a {
   margin: 20px 0;
   color: #fff;
   position: relative;
-  -webkit-transition: all .4s ease;
   transition: all .4s ease;
   border-style: none;
   cursor: pointer;
 }
 
 .btn:hover {
-  -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .container.modal-open .modal {
