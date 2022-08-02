@@ -7,6 +7,7 @@ import users from "../api/routes/users.js";
 import spots from "../api/routes/spots.js";
 import main from "../api/routes/main.js";
 import assay from "../api/routes/assay.js";
+import packageKeep from "../api/routes/packageKeep.js";
 import { config } from "../config/config.js";
 import { sequelize } from "../db/mysql.js";
 import { connectDB } from "../db/mongoose.js";
@@ -58,6 +59,8 @@ export default async (app) => {
   app.use("/spots", spots);
   // 여행기록 관련된
   app.use("/assay", assay);
+  // 패키지킵 서비스 관련
+  app.use("/packageKeep", packageKeep);
 
   // 에러처리
   app.use((req, res, next) => {

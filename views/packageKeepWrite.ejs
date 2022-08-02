@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <link href="/css/register.css" rel="stylesheet" type="text/css">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>패키지킵 서비스</title>
+    <script src="https://kit.fontawesome.com/7e7733aed3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link>
+</head>
+<body>
+    
+    <div class="register">
+        <div id="header">
+            <h1 class="big_title">
+              <img src= '/img/growT_logo.png'></img>
+            </h1>
+        </div>
+        <form action="/packageKeep/write" method="post">
+            <div class="flex">
+                <ul class="container">
+                    <li class="item center">
+                        가맹점명
+                    </li>
+                    <li class="item">
+                        <input type="text" name="companyName" id="companyName" placeholder="가맹점 이름을 입력하세요" autofocus required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        설명
+                    </li>
+                    <li class="item">
+                        <textarea name="introduction" id="introduction" placeholder="설명을 입력하세요."></textarea>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        패키지킵 가능요일
+                    </li>
+                    <li class="item">
+                        <input type="checkbox" name="daycan" value="SUN">일
+                        <input type="checkbox" name="daycan" value="MON">월
+                        <input type="checkbox" name="daycan" value="TUE">화
+                        <input type="checkbox" name="daycan" value="WED">수
+                        <input type="checkbox" name="daycan" value="THU">목
+                        <input type="checkbox" name="daycan" value="FRI">금
+                        <input type="checkbox" name="daycan" value="SAT">토
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        운영시간
+                    </li>
+                    <li class="item">
+                        <input type="number" name="startTime" id="startTime" placeholder="시작시간 / (ex)13" required>
+                        <input type="number" name="endTime" id="endTime" placeholder="종료시간 / (ex)21" required>
+                    </li>
+                </ul>
+
+                <ul class="container">
+                    <li class="item center">
+                        최대 짐 보관 가능 개수
+                    </li>
+                    <li class="item">
+                        <input type="number" name="maxPackage" id="maxPackage" placeholder="최대로 보관 가능한 짐의 수량" required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        전화번호
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userMail" id="userMail" placeholder="전화번호" required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        주소
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userAddr1" id="userAddr1" placeholder="주소찾기 버튼을 클릭하세요" required readonly>
+                    </li>
+                    <li class="item">
+                        <button class="idcheck" onclick="sample6_execDaumPostcode()" >주소찾기</button>
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                    
+                    </li>
+                    <li class="item">
+                        <input type="text" name="userAddr2" id="userAddr2" placeholder="상세주소를 입력하세요." required>
+                    </li>
+                    <li class="item">
+                        
+                    </li>
+                </ul>
+                <ul class="container">
+                    <li class="item center">
+                        
+                    </li>
+                    <li class="item">
+                        <button type="button" id="registerBtn" class="submit">가입하기</button>
+                    </li>
+                    <li class="item">
+                    
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div id="Footer">
+        <div class="bottom_menu">
+            <div>
+                <a href="/"><i class="fa-solid fa-house selected"></i></a>
+            </div>
+            <div>
+                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </div>
+            <div>
+                <a href="/spots"><i class="fa-solid fa-suitcase"></i></a>
+            </div>
+            <div>
+                <a href="/spots/map/page"><i class="fa-solid fa-map-location-dot"></i></a>
+            </div>
+            <div>
+                <a href="/users/mypage"><i class="fa-solid fa-gear"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/packagekeep.js"></script>
+</html>
